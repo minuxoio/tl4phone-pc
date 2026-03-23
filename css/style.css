@@ -1,67 +1,51 @@
 /* =========================================
-   原本的 PC 版樣式 (保持不變)
+   原本的 PC 版樣式 (修復了 Google Font 語法錯誤)
 ========================================= */
 html,
 body {
-  margin: 0; /* 移除邊距 */
-  padding: 0; /* 移除內邊距 */
-  overflow: hidden; /* 禁止滾動條出現 */
-  height: 100%; /* 覆蓋整個視窗 */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
   width: 100%;
   box-sizing: border-box;
 }
+
 body {
-  font-family: 
-    /* 英文字型優先順序 */
-    "Roboto Mono",
-    "Helvetica",
-    "Arial",
-    /* 中文字型優先順序 */ "Roboto Mono",
-    "Noto Sans CJK TC",
-    "PingFang TC",
-    "Microsoft JhengHei",
-    /* 後備字型 */ sans-serif;
+  font-family:
+    "Roboto Mono", "Helvetica", "Arial", "Noto Sans CJK TC", "PingFang TC",
+    "Microsoft JhengHei", sans-serif;
   background-color: #f9f9f9;
-
-  .roboto-mono-uniquifier {
-    font-family: "Roboto Mono", monospace;
-    font-optical-sizing: auto;
-    font-weight: weight;
-    font-style: normal;
-  }
-
-  .noto-sans-tc-uniquifier {
-    font-family: "Noto Sans TC", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: weight;
-    font-style: normal;
-  }
 }
-index {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+/* 修正 Prettier 會報錯的 Google Fonts 巢狀與無效 weight 語法 */
+.roboto-mono-uniquifier {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400;
+}
+.noto-sans-tc-uniquifier {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 400;
 }
 
 header.navigation {
   display: flex;
-  justify-content: space-between; /* 左中右區域 */
-  align-items: center; /* 垂直對齊 */
-  padding: 5vh 5vw; /* 外邊距以螢幕大小為基準 */
+  justify-content: space-between;
+  align-items: center;
+  padding: 5vh 5vw;
 }
 
-/* 左側導航樣式 */
-
 .nav-left {
-  position: absolute; /* 使用絕對定位，控制在特定位置 */
-  top: 5vh; /* 與視窗頂部的間距 */
-  margin-left: 2vw; /* 與視窗右側的間距 */
+  position: absolute;
+  margin-top: 2.5vh;
+  margin-left: 2.5vw;
   font-size: 11px;
+  font-weight: 500;
 }
 
 .runborder {
-  margin-top: 4vh; /* 與視窗頂部的間距 */
-  margin-left: 2.5vw; /* 與視窗右側的間距 */
+  margin-top: 4vh;
+  margin-left: 2.5vw;
 }
 
 .runborder .marquee-container {
@@ -75,30 +59,21 @@ header.navigation {
   font-size: 12px;
 }
 
-.marquee-content {
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee 10s linear infinite;
-  padding-left: 8px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-
-.marquee-content2 {
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee2 10s linear infinite;
-  padding-left: 8px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
+.marquee-content,
+.marquee-content2,
 .marquee-content3 {
   display: inline-block;
   white-space: nowrap;
-  animation: marquee2 10s linear infinite;
   padding-left: 8px;
   padding-top: 3px;
   padding-bottom: 3px;
+}
+.marquee-content {
+  animation: marquee 10s linear infinite;
+}
+.marquee-content2,
+.marquee-content3 {
+  animation: marquee2 10s linear infinite;
 }
 
 @keyframes marquee {
@@ -109,7 +84,6 @@ header.navigation {
     transform: translateX(-100%);
   }
 }
-
 @keyframes marquee2 {
   0% {
     transform: translateX(0);
@@ -118,58 +92,40 @@ header.navigation {
     transform: translateX(-100%);
   }
 }
-@keyframes marquee3 {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
 
-.nav-left {
-  position: absolute;
-  margin-top: 2.5vh; /* 與視窗頂部的間距 */
-  margin-left: 2.5vw; /* 與視窗右側的間距 */
-  font-size: 11px;
-  font-weight: 500;
-}
-
-/* 中間標題樣式 */
 .nav-center {
   display: flex;
   text-align: center;
-  flex-direction: column; /* 垂直排列 */
-  align-items: center; /* 元素居中對齊 */
-  justify-content: center; /* 垂直方向居中 */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-top: -5vh;
 }
 
 .nav-center .logo img {
   display: flex;
-  flex-direction: column; /* 確保垂直排列 */
-  align-items: center; /* 元素居中對齊 */
-  width: 40vw; /* Logo 寬度為視窗寬度的 20% */
-  height: auto; /* 自動高度 */
-  max-width: 700px; /* 最大寬度 */
-  min-width: 400px; /* 最小寬度 */
+  flex-direction: column;
+  align-items: center;
+  width: 40vw;
+  height: auto;
+  max-width: 700px;
+  min-width: 400px;
   margin-top: 2.5vh;
 }
 
 .nav-center .title {
-  font-size: 18px; /* 標題字體大小基於視窗高度 */
+  font-size: 18px;
   font-weight: 450;
   line-height: 35px;
-  margin-top: 50px; /* 額外距離 */
-  animation: breathing 5s infinite; /* 呼吸動畫：x秒循環 */
+  margin-top: 50px;
+  animation: breathing 5s infinite;
 }
 
 span.tc_space {
-  letter-spacing: 12px; /* 增加字距 */
+  letter-spacing: 12px;
   font-weight: 480;
 }
 
-/* 呼吸效果動畫 */
 @keyframes breathing {
   0% {
     opacity: 1;
@@ -188,25 +144,24 @@ span.tc_space {
   }
 }
 
-/* 右側導航樣式 */
 .nav-right {
-  position: absolute; /* 使用絕對定位，控制在特定位置 */
-  top: 4vh; /* 與視窗頂部的間距 */
-  right: 2vw; /* 與視窗右側的間距 */
+  position: absolute;
+  top: 4vh;
+  right: 2vw;
 }
 
 .nav-right .nav-image {
-  width: 20vw; /* 圖片寬度設為視窗寬度的 x% */
-  height: auto; /* 自動調整高度比例 */
-  max-width: 250px; /* 設定最大寬度，避免圖片過大 */
-  max-height: 250px; /* 設定最大高度，保持比例 */
-  object-fit: contain; /* 確保圖片完整顯示 */
+  width: 20vw;
+  height: auto;
+  max-width: 250px;
+  max-height: 250px;
+  object-fit: contain;
 }
 
 .right-vol {
-  position: absolute; /* 使用絕對定位，控制在特定位置 */
-  top: 11vh; /* 與視窗頂部的間距 */
-  right: 2.5vw; /* 與視窗右側的間距 */
+  position: absolute;
+  top: 11vh;
+  right: 2.5vw;
 }
 
 .right-vol .volume_icon {
@@ -214,58 +169,54 @@ span.tc_space {
   max-width: 22px;
   height: auto;
 }
+
 .right-vol .arrow_icon {
   max-width: 20px;
   height: auto;
 }
 
-/* 容器樣式 */
 .player-menu {
   display: flex;
-  justify-content: center; /* 主軸居中 */
-  align-items: center; /* 交叉軸居中 */
+  justify-content: center;
+  align-items: center;
   width: 90vw;
-  height: 10vh; /* 設定高度 */
-  position: relative; /* 定位父容器 */
-  gap: 0; /* 圖片之間間距 */
+  height: 10vh;
+  position: relative;
+  gap: 0;
   scale: 0.8;
   bottom: -15vh;
   left: 10vw;
 }
 
-/* 每個播放器樣式 */
 .player-item {
-  flex: 0 0 20%; /* 總寬度的 12% */
+  flex: 0 0 20%;
   transition:
     transform 0.5s ease,
-    opacity 0.3s ease; /* 平滑過渡 */
+    opacity 0.3s ease;
   position: relative;
   display: inline-block;
   cursor: pointer;
-  z-index: 1; /* 初始 z-index */
+  z-index: 1;
 }
 
 .player-item img {
   width: 80%;
   height: auto;
-  object-fit: contain; /* 圖片自適應 */
-  transition: transform 0.3s ease; /* hover 過渡效果 */
-  transform-origin: center center; /* 讓圖片從中心放大 */
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  transform-origin: center center;
 }
 
-/* Hover 效果：微小放大 */
 .player-item:hover img {
   transform: scale(1.1);
 }
 
-/* 選中項目樣式：放大且保持居中 */
 .player-item.active {
-  transform: scale(1.5); /* 放大 */
-  z-index: 10; /* 提升 z-index */
-  opacity: 1; /* 完全顯示 */
+  transform: scale(1.5);
+  z-index: 10;
+  opacity: 1;
 }
 
-/* 打字機效果容器 */
 #loading {
   position: fixed;
   width: 100%;
@@ -300,7 +251,6 @@ span.tc_space {
     width: 12ch;
   }
 }
-
 @keyframes blink {
   50% {
     border-color: transparent;
@@ -320,11 +270,12 @@ span.tc_space {
   }
 
   body {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-bottom: 40px;
+    padding-bottom: 100px;
   }
 
   .right-vol {
@@ -348,20 +299,20 @@ span.tc_space {
   .nav-center {
     order: 2;
     position: relative;
-    margin-top: 2vh; /* 縮小與跑馬燈的距離，原本是 5vh */
+    margin-top: 2vh;
     width: 100%;
   }
   .nav-center .logo img {
-    width: 55vw; /* 縮小 Logo，原本是 75vw */
+    width: 55vw;
     min-width: unset;
   }
   .nav-center .title {
-    margin-top: 15px; /* 縮小與 Logo 的距離，原本是 30px */
-    font-size: 11px; /* 縮小字體 */
-    line-height: 20px; /* 縮小行高 */
+    margin-top: 15px;
+    font-size: 11px;
+    line-height: 20px;
   }
   span.tc_space {
-    letter-spacing: 2px; /* 縮小字距，避免斷行 */
+    letter-spacing: 2px;
   }
 
   /* [順序 3] 滾動選單 */
@@ -380,10 +331,8 @@ span.tc_space {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
 
-    /* 大幅縮減上下空間：從 80px 降到 40px，釋放畫面高度 */
-    padding: 80px 10vw;
-    margin-top: 1vh; /* 縮小與上方標題的距離 */
-
+    padding: 40px 10vw;
+    margin-top: 1vh;
     gap: 20px;
     -webkit-overflow-scrolling: touch;
   }
@@ -396,7 +345,7 @@ span.tc_space {
   }
 
   .player-item {
-    flex: 0 0 42%; /* 機器本體稍微縮小（從 55% 降到 42%），讓畫面更不擁擠 */
+    flex: 0 0 42%;
     scroll-snap-align: center;
   }
 
@@ -407,35 +356,39 @@ span.tc_space {
     transform: scale(1.05);
   }
 
-  /* [順序 4] 底部文字與標籤 */
+  /* [改為絕對定位] 底部文字 (左下角) */
   .nav-left {
-    order: 4;
-    position: relative;
-    margin: 0 auto 1vh auto; /* 移除上方距離，讓文字貼近播放器 */
-    top: auto;
-    left: auto;
-    text-align: center;
-    width: 90vw;
-    font-size: 10px;
-    line-height: 1.6;
+    position: absolute;
+    bottom: 20px;
+    left: 5vw;
+    margin: 0;
+    text-align: left;
+    width: 65vw;
+    font-size: 9px;
+    line-height: 1.4;
     color: #666;
   }
 
-  /* 【修正重點 2】：在手機版一律隱藏這段文字內的所有 <br>，讓螢幕寬度接管排版 */
+  .nav-left p {
+    margin: 0;
+  }
+
   .nav-left p br {
     display: none;
   }
 
+  /* [改為絕對定位] 標籤圖 (右下角) */
   .nav-right {
-    order: 5;
-    position: relative;
+    position: absolute;
+    bottom: 15px;
+    right: 5vw;
+    margin: 0;
     top: auto;
-    right: auto;
-    margin: 0 auto;
-    text-align: center;
   }
+
   .nav-right .nav-image {
-    width: 25vw;
-    margin-top: 10px;
+    width: 18vw;
+    max-width: 70px;
+    margin-top: 0;
   }
 }
