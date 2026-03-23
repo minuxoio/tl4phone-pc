@@ -331,7 +331,6 @@ span.tc_space {
    手機版 (Mobile) 專屬樣式設定 (< 768px)
 ========================================= */
   @media screen and (max-width: 768px) {
-    /* 🌟 1. 回歸最穩定的自然排版，不鎖死螢幕，但預留底部空間 */
     html,
     body {
       overflow-y: auto;
@@ -342,25 +341,23 @@ span.tc_space {
 
     body {
       position: relative;
-      display: block; /* 拿掉危險的 flex，改回正常的區塊排列 */
-      padding-bottom: 120px; /* 給底部版權文字預留絕對的安全空間 */
+      display: block;
+      padding-bottom: 90px; /* 稍微縮小底部的留白 */
     }
 
-    /* 消除原版 header 的干擾 */
     header.navigation {
       display: block;
     }
-
     .right-vol {
       display: none;
     }
 
     /* ==========================================
-     🌟 上半部：跑馬燈與標題
+     🌟 上半部：間距收緊
   ========================================== */
     .runborder {
       position: relative;
-      margin: 5vh auto 0 auto;
+      margin: 3vh auto 0 auto; /* 往上提，縮小頂部間距 */
       width: 90vw;
       display: flex;
       justify-content: center;
@@ -371,7 +368,7 @@ span.tc_space {
 
     .nav-center {
       position: relative;
-      margin-top: 3vh;
+      margin-top: 2vh; /* 縮小與跑馬燈的間距 */
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -382,7 +379,7 @@ span.tc_space {
       min-width: unset;
     }
     .nav-center .title {
-      margin-top: 15px;
+      margin-top: 8px;
       font-size: 11px;
       line-height: 20px;
     }
@@ -391,15 +388,17 @@ span.tc_space {
     }
 
     /* ==========================================
-     🌟 中間選單：強制給定高度，絕對不塌陷！
+     🌟 中間選單：緊緊包覆，消滅所有多餘空白！
   ========================================== */
     .player-menu {
       position: relative;
       width: 100vw;
+      box-sizing: border-box;
 
-      /* 🔥 關鍵修復：強制給它 45vh (約佔螢幕快一半的高度)，它絕對不敢再消失 */
-      height: 45vh;
-      margin-top: 3vh;
+      /* 🔥 關鍵 1：高度跟著寬度走，緊密包覆圖片，消滅上下空白 */
+      height: 65vw;
+
+      margin-top: 2vh; /* 縮小與上方標題的間距 */
       bottom: auto;
       left: auto;
 
@@ -409,8 +408,12 @@ span.tc_space {
       overflow-x: auto;
       scroll-snap-type: x mandatory;
 
-      padding: 0 15vw;
-      gap: 30px;
+      /* 🔥 關鍵 2：精準的左右對齊 (100vw - 65vw) / 2 = 17.5vw */
+      padding: 0 17.5vw;
+
+      /* 🔥 關鍵 3：縮小圖片與圖片之間的左右縫隙 */
+      gap: 15px;
+
       -webkit-overflow-scrolling: touch;
     }
 
@@ -422,8 +425,9 @@ span.tc_space {
     }
 
     .player-item {
-      flex: 0 0 70%;
-      height: 100%; /* 讓它填滿 45vh 的容器 */
+      /* 🔥 關鍵 4：直接寫死寬度為 65vw，絕對不會再被壓縮 */
+      flex: 0 0 65vw;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -433,7 +437,7 @@ span.tc_space {
     .player-item img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* 確保圖片等比縮放，完整顯示 */
+      object-fit: contain;
     }
 
     .player-item:hover img {
@@ -444,16 +448,16 @@ span.tc_space {
     }
 
     /* ==========================================
-     🌟 底部固定區塊：乖乖待在最下面
+     🌟 底部固定區塊：微調對齊
   ========================================== */
     .nav-left {
       position: absolute;
-      bottom: 25px;
+      bottom: 20px;
       left: 5vw;
       margin: 0;
       text-align: left;
       width: auto;
-      font-size: 8px; /* 幫你稍微調大一點點點，不然 5px 真的會糊成一團 */
+      font-size: 8px;
       line-height: 1.4;
       color: #666;
       white-space: normal;
@@ -467,7 +471,7 @@ span.tc_space {
 
     .nav-right {
       position: absolute;
-      bottom: 25px;
+      bottom: 20px;
       right: 5vw;
       margin: 0;
       top: auto;
