@@ -331,40 +331,36 @@ span.tc_space {
    手機版 (Mobile) 專屬樣式設定 (< 768px)
 ========================================= */
   @media screen and (max-width: 768px) {
-    /* 1. 鎖定螢幕：不准滑動 */
+    /* 🌟 1. 終極鎖定：不准滑動，設定為一個螢幕的絕對空間 */
     html,
     body {
       overflow: hidden !important;
       height: 100dvh !important;
-      width: 100vw;
+      width: 100vw !important;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      position: relative !important; /* 讓內部元素有絕對定位的基準 */
     }
 
-    body {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-bottom: 15vh; /* 底部安全區 */
-    }
-
+    /* 關閉原本 header 的排版干擾 */
     header.navigation {
-      display: contents;
+      display: block;
+      margin: 0;
+      padding: 0;
     }
     .right-vol {
       display: none;
     }
 
     /* ==========================================
-     🌟 上半部：跑馬燈與標題
+     🌟 頂部：釘死在畫面上方
   ========================================== */
     .runborder {
-      order: 1;
-      position: relative;
-      margin: 4vh auto 0 auto;
-      width: 90vw;
+      position: absolute !important;
+      top: 3vh !important; /* 距離頂部 3% */
+      left: 5vw !important;
+      width: 90vw !important;
+      margin: 0 !important;
       display: flex;
       justify-content: center;
     }
@@ -373,10 +369,11 @@ span.tc_space {
     }
 
     .nav-center {
-      order: 2;
-      position: relative;
-      margin-top: 2vh;
-      width: 100%;
+      position: absolute !important;
+      top: 9vh !important; /* 放在跑馬燈下方 */
+      left: 0 !important;
+      width: 100vw !important;
+      margin: 0 !important;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -396,28 +393,28 @@ span.tc_space {
     }
 
     /* ==========================================
-     🌟 中間選單：修復寬度暴走問題！
+     🌟 中間選單：暴力垂直置中！絕對不亂跑！
   ========================================== */
     .player-menu {
-      order: 3;
-      position: relative;
-      width: 100vw;
+      position: absolute !important;
+      top: 50% !important; /* 從畫面上方算起 50% 的位置 */
+      left: 0 !important;
+      transform: translateY(
+        -50%
+      ) !important; /* 往回拉一半高度，達成完美的正中央 */
 
-      /* 🔥 致命關鍵修復：有了這行，padding 就不會撐破 100vw 的寬度！ */
-      box-sizing: border-box;
+      width: 100vw !important;
+      height: 45vh !important;
+      box-sizing: border-box !important;
 
-      height: 45vh;
-      margin-top: auto;
-      margin-bottom: auto;
+      margin: 0 !important;
+      padding: 0 22.5vw !important; /* 讓第一台機器精準置中 */
 
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-
-      /* (100vw - 55vw) / 2 = 22.5vw，讓第一台與最後一台完美置中 */
-      padding: 0 22.5vw;
       gap: 20px;
       -webkit-overflow-scrolling: touch;
     }
@@ -430,7 +427,7 @@ span.tc_space {
     }
 
     .player-item {
-      flex: 0 0 55vw;
+      flex: 0 0 55vw !important;
       height: 100%;
       display: flex;
       align-items: center;
@@ -452,13 +449,13 @@ span.tc_space {
     }
 
     /* ==========================================
-     🌟 底部固定區塊
+     🌟 底部：釘死在畫面最下方
   ========================================== */
     .nav-left {
-      position: absolute;
-      bottom: 4vh;
-      left: 5vw;
-      margin: 0;
+      position: absolute !important;
+      bottom: 4vh !important; /* 距離底部 4% */
+      left: 5vw !important;
+      margin: 0 !important;
       text-align: left;
       width: auto;
       font-size: 8px;
@@ -474,16 +471,16 @@ span.tc_space {
     }
 
     .nav-right {
-      position: absolute;
-      bottom: 4vh;
-      right: 5vw;
-      margin: 0;
-      top: auto;
+      position: absolute !important;
+      bottom: 4vh !important; /* 跟左邊文字一樣的底線 */
+      right: 5vw !important;
+      top: auto !important;
+      margin: 0 !important;
     }
     .nav-right .nav-image {
       width: 25vw;
       max-width: 90px;
-      margin-top: 0;
+      margin: 0 !important;
       object-fit: contain;
     }
   }
