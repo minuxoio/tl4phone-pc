@@ -400,8 +400,8 @@ span.tc_space {
   }
 
   .player-item img {
-    width: 100%; /* 🔥 關鍵修復：把 800% 改回 100% 正常大小 */
-    height: auto;
+    width: 80%;
+    height: 80%;
     object-fit: contain;
   }
 
