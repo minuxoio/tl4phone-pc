@@ -363,20 +363,20 @@ span.tc_space {
     left: 5vw;
     margin: 0;
     text-align: left;
-    /* 這裡拿掉了 width: 65vw 的限制，讓你的 <br> 完全接管排版 */
+    width: auto; /* 讓它自然展開，不限制寬度 */
     font-size: 9px;
     line-height: 1.4;
     color: #666;
+    white-space: normal; /* 確保文字排版正常 */
   }
 
   .nav-left p {
     margin: 0;
   }
 
-  /* 💡 已經把 .nav-left p br { display: none; } 刪除了，現在換行會正常顯示！ */
-
+  /* 🔥 終極指令：強制手機版顯示所有的 <br> 換行標籤 */
   .nav-left p br {
-    display: none;
+    display: inline !important;
   }
 
   /* [改為絕對定位] 標籤圖 (右下角) */
