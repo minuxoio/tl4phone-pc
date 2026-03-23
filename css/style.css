@@ -331,7 +331,7 @@ span.tc_space {
    手機版 (Mobile) 專屬樣式設定 (< 768px)
 ========================================= */
   @media screen and (max-width: 768px) {
-    /* 🔥 1. 終極鎖定：絕對不准滑動，高度精準鎖死為 1 個手機螢幕 (100dvh) */
+    /* 🔥 1. 終極鎖定：不准滑動，鎖定一個螢幕高 */
     html,
     body {
       overflow: hidden !important;
@@ -347,11 +347,11 @@ span.tc_space {
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* 底部預留 12vh 的絕對安全空間給版權文字，確保不重疊 */
-      padding-bottom: 12vh;
+      justify-content: flex-start;
+      /* 給底部版權文字預留絕對安全區，選單絕對不會掉進這個區域 */
+      padding-bottom: 15vh;
     }
 
-    /* 消除原版 header 干擾 */
     header.navigation {
       display: contents;
     }
@@ -365,7 +365,7 @@ span.tc_space {
     .runborder {
       order: 1;
       position: relative;
-      margin: 3vh auto 0 auto;
+      margin: 4vh auto 0 auto;
       width: 90vw;
       display: flex;
       justify-content: center;
@@ -398,26 +398,28 @@ span.tc_space {
     }
 
     /* ==========================================
-     🌟 中間選單：彈性置中，尺寸適中，絕不超出畫面！
+     🌟 中間選單：強制置中！絕對不會再亂跑！
   ========================================== */
     .player-menu {
       order: 3;
       position: relative;
       width: 100vw;
 
-      /* 魔法：自動吸收剩下的所有空間，並在裡面垂直置中 */
-      flex-grow: 1;
+      /* 🔥 關鍵修復 1：寫死安全高度，它絕對不會再被壓縮或變形 */
+      height: 45vh;
+
+      /* 🔥 關鍵修復 2：利用 margin auto 將這個區塊「完美懸浮」在剩下的空間正中間 */
+      margin-top: auto;
+      margin-bottom: auto;
+
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
-
       overflow-x: auto;
       scroll-snap-type: x mandatory;
 
-      /* 精準對齊：機器佔 55vw，左右各留 22.5vw，加起來剛好 100vw 完美置中 */
       padding: 0 22.5vw;
       gap: 20px;
-      margin-top: 0;
       -webkit-overflow-scrolling: touch;
     }
 
@@ -429,8 +431,8 @@ span.tc_space {
     }
 
     .player-item {
-      /* 🔥 縮小機器：改為佔據畫面 55% 寬度，精緻不擁擠 */
       flex: 0 0 55vw;
+      height: 100%; /* 確保容器填滿 45vh */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -439,10 +441,8 @@ span.tc_space {
 
     .player-item img {
       width: 100%;
-      height: auto;
-      /* 雙重保險：絕對不允許圖片高度超過剩餘空間，防止畫面被撐破 */
-      max-height: 45vh;
-      object-fit: contain;
+      height: 100%;
+      object-fit: contain; /* 圖片完美等比縮放，不會被切掉 */
     }
 
     .player-item:hover img {
@@ -457,7 +457,7 @@ span.tc_space {
   ========================================== */
     .nav-left {
       position: absolute;
-      bottom: 3vh; /* 距離底部 3% 高度 */
+      bottom: 4vh;
       left: 5vw;
       margin: 0;
       text-align: left;
@@ -476,7 +476,7 @@ span.tc_space {
 
     .nav-right {
       position: absolute;
-      bottom: 3vh;
+      bottom: 4vh;
       right: 5vw;
       margin: 0;
       top: auto;
