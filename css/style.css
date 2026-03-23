@@ -383,7 +383,7 @@ span.tc_space {
     /* 中間選單 */
     .player-menu {
       position: absolute !important;
-      top: 60% !important;
+      top: 15vh !important;
       left: 0 !important;
       transform: translateY(-50%) !important;
       scale: 1 !important;
@@ -465,8 +465,7 @@ span.tc_space {
       margin: 0 !important;
     }
     .nav-right .nav-image {
-      width: 25vw;
-      max-width: 90px;
+      width: 40vw;
       margin: 0 !important;
       object-fit: contain;
     }
