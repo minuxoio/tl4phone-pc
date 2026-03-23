@@ -383,7 +383,7 @@ span.tc_space {
     /* 中間選單 */
     .player-menu {
       position: absolute !important;
-      top: 50vh !important;
+      top: 60vh !important;
       left: 0 !important;
       transform: translateY(-50%) !important;
       scale: 1 !important;
@@ -445,7 +445,7 @@ span.tc_space {
       margin: 0 !important;
       text-align: left;
       width: auto;
-      font-size: 4px;
+      font-size: 6px;
       line-height: 1.4;
       color: #000000;
       white-space: normal;
