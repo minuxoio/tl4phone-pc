@@ -400,6 +400,8 @@ span.tc_space {
       left: 0 !important;
       transform: translateY(-50%) !important; /* 暴力置中魔法 */
 
+      scale: 1 !important; /* 🌟 加上這行，把 PC 版的 scale: 0.8 抵銷掉 */
+
       /* 🔥 聽你的！寬度 100vw 直接貼齊手機邊緣，【絕對不加 Padding】 */
       width: 100vw !important;
       height: 45vh !important;
