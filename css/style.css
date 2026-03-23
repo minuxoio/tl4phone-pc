@@ -358,7 +358,7 @@ span.tc_space {
 
     .nav-left {
       position: absolute;
-      top: 7vh; /* 放在跑馬燈正下方 */
+      margin-top: 5vh; /* 放在跑馬燈正下方 */
       left: 5vw;
       margin: 0;
       width: 30vw; /* 限制寬度，不干擾右邊 */
@@ -383,13 +383,13 @@ span.tc_space {
       margin: 0;
     }
     .nav-right .nav-image {
-      width: 50vw;
+      width: 40vw;
       margin: 0;
     }
 
     .right-vol {
       position: absolute;
-      top: 7vh; /* 放在圖片正下方 */
+      margin-top: 5vh; /* 放在圖片正下方 */
       right: 5vw;
       margin: 0;
       display: block; /* 確保顯示 */
