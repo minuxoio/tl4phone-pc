@@ -339,8 +339,12 @@ span.tc_space {
       padding: 0;
     }
     .right-vol {
-      display: none;
-    }
+      display: block !important; 
+      position: absolute !important;
+      top: 4vh !important; 
+      right: 5vw !important; 
+      z-index: 99 !important; 
+      transform: scale(0.8); 
 
     /* 頂部 */
     .runborder {
@@ -383,7 +387,7 @@ span.tc_space {
     /* 中間選單 */
     .player-menu {
       position: absolute !important;
-      top: 60vh !important;
+      top: 55vh !important;
       left: 0 !important;
       transform: translateY(-50%) !important;
       scale: 1 !important;
