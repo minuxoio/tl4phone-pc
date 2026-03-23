@@ -364,9 +364,7 @@ span.tc_space {
     margin: 0;
     text-align: left;
     width: auto; /* 讓 <br> 正常運作 */
-
-    /* 🌟 修改重點 1：將字體從 9px 縮小到 8px，增加精緻感 */
-    font-size: 8px;
+    font-size: 5px;
 
     line-height: 1.4;
     color: #666;
@@ -386,7 +384,7 @@ span.tc_space {
   .nav-right {
     position: absolute;
 
-    /* 🌟 修改重點 2：稍微把圖片往上提一點點 (15px -> 20px)，與左邊文字對齊 */
+    /* 把圖片往上提 */
     bottom: 20px;
 
     right: 5vw; /* 保持靠右 */
@@ -395,10 +393,10 @@ span.tc_space {
   }
 
   .nav-right .nav-image {
-    /* 🌟 修改重點 3：放大圖片 (18vw -> 28vw) */
-    width: 28vw;
+    /* 放大圖片 */
+    width: 40vw;
 
-    /* 🌟 修改重點 4：提高最大寬度限制 (70px -> 100px)，確保在大螢幕手機上也有存在感 */
+    /*提高最大寬度限制 (70px -> 100px)，確保在大螢幕手機上也有存在感 */
     max-width: 100px;
 
     margin-top: 0;
