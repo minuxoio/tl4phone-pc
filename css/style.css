@@ -363,7 +363,7 @@ span.tc_space {
     left: 5vw;
     margin: 0;
     text-align: left;
-    width: 65vw;
+    /* 這裡拿掉了 width: 65vw 的限制，讓你的 <br> 完全接管排版 */
     font-size: 9px;
     line-height: 1.4;
     color: #666;
@@ -372,6 +372,8 @@ span.tc_space {
   .nav-left p {
     margin: 0;
   }
+
+  /* 💡 已經把 .nav-left p br { display: none; } 刪除了，現在換行會正常顯示！ */
 
   .nav-left p br {
     display: none;
