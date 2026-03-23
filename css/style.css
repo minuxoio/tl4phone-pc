@@ -431,6 +431,11 @@ span.tc_space {
     color: #666;
   }
 
+  /* 在手機版隱藏電腦專用的換行標籤 */
+  .pc-br {
+    display: none;
+  }
+
   .nav-right {
     order: 5;
     position: relative;
