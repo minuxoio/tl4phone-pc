@@ -409,7 +409,7 @@ span.tc_space {
       height: 45vh;
 
       /* 🔥 關鍵修復 2：利用 margin auto 將這個區塊「完美懸浮」在剩下的空間正中間 */
-      margin-top: auto;
+      margin-top: 40vh;
       margin-bottom: auto;
 
       display: flex;
