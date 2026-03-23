@@ -261,11 +261,11 @@ span.tc_space {
    手機版 (Mobile) 專屬樣式設定 (< 768px)
 ========================================= */
 @media screen and (max-width: 768px) {
-  /* 🌟 1. 鎖死螢幕：禁止上下滑動，高度完美貼合 1 個手機螢幕 */
+  /* 🌟 1. 鎖死螢幕：高度完美貼合 1 個手機螢幕 */
   html,
   body {
     overflow: hidden;
-    height: 100dvh; /* 使用 dvh 精準貼合手機動態視窗，不會被網址列吃掉 */
+    height: 100dvh;
     width: 100vw;
     box-sizing: border-box;
   }
@@ -276,19 +276,28 @@ span.tc_space {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    /* 🌟 2. 在底部預留 15% 的安全空間，專門留給版權文字與圖標 */
-    padding-bottom: 15vh;
+    padding-bottom: 15vh; /* 給底部版權文字預留安全空間 */
+  }
+
+  /* 🔥 關鍵解鎖：消除原版 header 隱藏的 padding 佔位，讓元素能真正貼齊螢幕頂部邊緣 */
+  header.navigation {
+    display: contents;
   }
 
   .right-vol {
     display: none;
   }
 
-  /* [順序 1] 跑馬燈 */
+  /* ==========================================
+     🌟 上方固定區塊：跑馬燈與 Logo
+  ========================================== */
+
+  /* [順序 1] 跑馬燈：貼緊螢幕上緣 */
   .runborder {
     order: 1;
     position: relative;
-    margin: 4vh auto 0 auto; /* 距離頂部 4vh */
+    /* 距離頂部 2vh (稍微預留一點點給手機時間/電量狀態列的空間，避免重疊) */
+    margin: 2vh auto 0 auto;
     width: 90vw;
     display: flex;
     justify-content: center;
@@ -297,11 +306,12 @@ span.tc_space {
     width: 100%;
   }
 
-  /* [順序 2] 中間標題 */
+  /* [順序 2] 中間標題：緊跟在跑馬燈下方 */
   .nav-center {
     order: 2;
     position: relative;
-    margin-top: 3vh; /* 與上方跑馬燈的距離 */
+    /* 距離上方跑馬燈 2vh，讓視覺更緊湊 */
+    margin-top: 2vh;
     width: 100%;
   }
   .nav-center .logo img {
@@ -317,24 +327,27 @@ span.tc_space {
     letter-spacing: 2px;
   }
 
+  /* ==========================================
+     🌟 中間滾動區塊：自動填滿剩餘空間並置中
+  ========================================== */
+
   /* [順序 3] 滾動選單 */
   .player-menu {
     order: 3;
     position: relative;
     width: 100vw;
 
-    /* 🌟 3. 核心魔法：讓選單自動「吸收」中間所有剩下的高度，並在裡面垂直置中 */
+    /* 吸收剩下的所有高度，這會把「跑馬燈」往上推到頂、「版權文字」往下推到底 */
     flex-grow: 1;
     display: flex;
     flex-wrap: nowrap;
-    align-items: center; /* 確保播放器圖片乖乖待在中間，不會亂跑 */
+    align-items: center;
 
     overflow-x: auto;
     scroll-snap-type: x mandatory;
 
-    /* 因為已經用 flex-grow 撐開高度，這裡只要管左右留白就好 */
     padding: 0 10vw;
-    margin-top: 2vh;
+    margin-top: 0; /* 不需要 margin，交給 flex-grow 處理 */
     gap: 20px;
     -webkit-overflow-scrolling: touch;
   }
@@ -359,18 +372,18 @@ span.tc_space {
   }
 
   /* ==========================================
-     🌟 4. 底部元素：絕對定位，死死卡在畫面底部
+     🌟 底部固定區塊：版權文字與圖標
   ========================================== */
 
   /* 底部文字 (左下角) */
   .nav-left {
     position: absolute;
-    bottom: 4vh; /* 距離畫面最底端 4% 的位置 */
+    bottom: 4vh;
     left: 5vw;
     margin: 0;
     text-align: left;
     width: auto;
-    font-size: 5px; /* 保留你設定的 5px */
+    font-size: 5px;
     line-height: 1.4;
     color: #666;
     white-space: normal;
@@ -388,14 +401,14 @@ span.tc_space {
   /* 標籤圖 (右下角) */
   .nav-right {
     position: absolute;
-    bottom: 4vh; /* 與左邊文字保持同樣的底部高度，完美切齊 */
+    bottom: 4vh;
     right: 5vw;
     margin: 0;
     top: auto;
   }
 
   .nav-right .nav-image {
-    width: 40vw; /* 保留你設定的 40vw */
+    width: 40vw;
     max-width: 100px;
     margin-top: 0;
     object-fit: contain;
