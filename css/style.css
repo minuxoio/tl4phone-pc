@@ -297,7 +297,7 @@ span.tc_space {
 
   .nav-left {
     position: absolute;
-    top: 5vh;
+    top: 10vh;
     left: 5vw;
     margin: 0;
     width: 30vw;
@@ -328,7 +328,7 @@ span.tc_space {
 
   .right-vol {
     position: absolute;
-    top: 5vh;
+    top: 10vh;
     right: 5vw;
     margin: 0;
     display: block;
