@@ -381,7 +381,7 @@ span.tc_space {
     scroll-snap-type: x mandatory;
 
     /* 大幅縮減上下空間：從 80px 降到 40px，釋放畫面高度 */
-    padding: 40px 10vw;
+    padding: 80px 10vw;
     margin-top: 1vh; /* 縮小與上方標題的距離 */
 
     gap: 20px;
