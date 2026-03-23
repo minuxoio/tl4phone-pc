@@ -327,98 +327,156 @@ span.tc_space {
     letter-spacing: 2px;
   }
 
-  /* ==========================================
-     🌟 中間滾動區塊：自動填滿剩餘空間並置中
+  /* =========================================
+   手機版 (Mobile) 專屬樣式設定 (< 768px)
+========================================= */
+  @media screen and (max-width: 768px) {
+    /* 🌟 1. 回歸最穩定的自然排版，不鎖死螢幕，但預留底部空間 */
+    html,
+    body {
+      overflow-y: auto;
+      overflow-x: hidden;
+      height: auto;
+      min-height: 100vh;
+    }
+
+    body {
+      position: relative;
+      display: block; /* 拿掉危險的 flex，改回正常的區塊排列 */
+      padding-bottom: 120px; /* 給底部版權文字預留絕對的安全空間 */
+    }
+
+    /* 消除原版 header 的干擾 */
+    header.navigation {
+      display: block;
+    }
+
+    .right-vol {
+      display: none;
+    }
+
+    /* ==========================================
+     🌟 上半部：跑馬燈與標題
   ========================================== */
+    .runborder {
+      position: relative;
+      margin: 5vh auto 0 auto;
+      width: 90vw;
+      display: flex;
+      justify-content: center;
+    }
+    .runborder .marquee-container {
+      width: 100%;
+    }
 
-  /* [順序 3] 滾動選單 */
-  .player-menu {
-    order: 3;
-    position: relative;
-    width: 100vw;
+    .nav-center {
+      position: relative;
+      margin-top: 3vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-center .logo img {
+      width: 55vw;
+      min-width: unset;
+    }
+    .nav-center .title {
+      margin-top: 15px;
+      font-size: 11px;
+      line-height: 20px;
+    }
+    span.tc_space {
+      letter-spacing: 2px;
+    }
 
-    flex-grow: 1;
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-
-    /* 🌟 修改 1：調整左右留白 */
-    /* 因為機器變大了(70vw)，(100-70)/2 = 15，所以左右各留 15vw，確保第一台能完美置中 */
-    padding: 0 15vw;
-
-    margin-top: 0;
-
-    /* 🌟 修改 2：拉開間距 */
-    /* 機器變大後，間距稍微拉開到 30px，滑動起來會更有單個專輯的聚焦感 */
-    gap: 30px;
-
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .player-menu::-webkit-scrollbar {
-    display: none;
-  }
-  .player-menu {
-    scrollbar-width: none;
-  }
-
-  .player-item {
-    scroll-snap-align: center;
-
-    /* 🌟 修改 3：大幅放大播放器 */
-    /* 把原本的 42% 直接放大到 70%！這樣圖片的高度會等比放大，視覺上就會佔據大約一半的手機螢幕 */
-    flex: 0 0 70%;
-  }
-
-  .player-item:hover img {
-    transform: scale(1);
-  }
-  .player-item:active img {
-    transform: scale(1.05);
-  }
-
-  /* ==========================================
-     🌟 底部固定區塊：版權文字與圖標
+    /* ==========================================
+     🌟 中間選單：強制給定高度，絕對不塌陷！
   ========================================== */
+    .player-menu {
+      position: relative;
+      width: 100vw;
 
-  /* 底部文字 (左下角) */
-  .nav-left {
-    position: absolute;
-    bottom: 4vh;
-    left: 5vw;
-    margin: 0;
-    text-align: left;
-    width: auto;
-    font-size: 8px;
-    line-height: 1.4;
-    color: #666;
-    white-space: normal;
-  }
+      /* 🔥 關鍵修復：強制給它 45vh (約佔螢幕快一半的高度)，它絕對不敢再消失 */
+      height: 45vh;
+      margin-top: 3vh;
+      bottom: auto;
+      left: auto;
 
-  .nav-left p {
-    margin: 0;
-  }
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
 
-  /* 強制顯示換行 */
-  .nav-left p br {
-    display: inline !important;
-  }
+      padding: 0 15vw;
+      gap: 30px;
+      -webkit-overflow-scrolling: touch;
+    }
 
-  /* 標籤圖 (右下角) */
-  .nav-right {
-    position: absolute;
-    bottom: 4vh;
-    right: 5vw;
-    margin: 0;
-    top: auto;
-  }
+    .player-menu::-webkit-scrollbar {
+      display: none;
+    }
+    .player-menu {
+      scrollbar-width: none;
+    }
 
-  .nav-right .nav-image {
-    width: 40vw;
-    max-width: 100px;
-    margin-top: 0;
-    object-fit: contain;
+    .player-item {
+      flex: 0 0 70%;
+      height: 100%; /* 讓它填滿 45vh 的容器 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      scroll-snap-align: center;
+    }
+
+    .player-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* 確保圖片等比縮放，完整顯示 */
+    }
+
+    .player-item:hover img {
+      transform: scale(1);
+    }
+    .player-item:active img {
+      transform: scale(1.05);
+    }
+
+    /* ==========================================
+     🌟 底部固定區塊：乖乖待在最下面
+  ========================================== */
+    .nav-left {
+      position: absolute;
+      bottom: 25px;
+      left: 5vw;
+      margin: 0;
+      text-align: left;
+      width: auto;
+      font-size: 8px; /* 幫你稍微調大一點點點，不然 5px 真的會糊成一團 */
+      line-height: 1.4;
+      color: #666;
+      white-space: normal;
+    }
+    .nav-left p {
+      margin: 0;
+    }
+    .nav-left p br {
+      display: inline !important;
+    }
+
+    .nav-right {
+      position: absolute;
+      bottom: 25px;
+      right: 5vw;
+      margin: 0;
+      top: auto;
+    }
+    .nav-right .nav-image {
+      width: 25vw;
+      max-width: 90px;
+      margin-top: 0;
+      object-fit: contain;
+    }
   }
 }
