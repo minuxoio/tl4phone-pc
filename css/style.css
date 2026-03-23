@@ -349,7 +349,7 @@ span.tc_space {
       position: absolute;
       top: 3vh;
       left: 5vw;
-      width: 50vw; /* 限制寬度，留空間給右邊 */
+      width: 25vw; /* 限制寬度，留空間給右邊 */
       margin: 0;
     }
     .runborder .marquee-container {
@@ -361,10 +361,10 @@ span.tc_space {
       top: 9vh; /* 放在跑馬燈正下方 */
       left: 5vw;
       margin: 0;
-      width: 50vw; /* 限制寬度，不干擾右邊 */
+      width: 30vw; /* 限制寬度，不干擾右邊 */
       font-size: 7px; /* 縮小字體以適應頂部空間 */
       line-height: 1.4;
-      color: #666;
+      color: #000000;
       text-align: left;
       white-space: normal;
     }
@@ -383,14 +383,14 @@ span.tc_space {
       margin: 0;
     }
     .nav-right .nav-image {
-      width: 25vw;
+      width: 50vw;
       max-width: 80px;
       margin: 0;
     }
 
     .right-vol {
       position: absolute;
-      top: 17vh; /* 放在圖片正下方 */
+      top: 5vh; /* 放在圖片正下方 */
       right: 5vw;
       margin: 0;
       display: block; /* 確保顯示 */
@@ -401,8 +401,7 @@ span.tc_space {
   ========================================== */
     .nav-center {
       position: relative;
-      /* 核心：距離頂部 28vh，完美避開第 1 層的所有絕對定位元素 */
-      margin-top: 28vh;
+      margin-top: 10vh;
       width: 100vw;
       display: flex;
       flex-direction: column;
@@ -431,7 +430,7 @@ span.tc_space {
       position: relative;
       width: 100vw;
       height: auto;
-      margin-top: 5vh; /* 距離上方呼吸字體的距離 */
+      margin-top: 20vh; /* 距離上方呼吸字體的距離 */
       margin-bottom: 10vh; /* 底部留一點白 */
       bottom: auto;
       left: auto;
@@ -465,18 +464,9 @@ span.tc_space {
     }
 
     .player-item img {
-      width: 100%;
-      height: auto;
+      width: 800%;
+      height: 80%;
       object-fit: contain;
-    }
-
-    /* 🔥 讓第一台與最後一台完美置中的墊片魔法 
-     (100vw 螢幕 - 60vw 機器) / 2 = 20vw */
-    .player-item:first-child {
-      margin-left: 20vw;
-    }
-    .player-item:last-child {
-      margin-right: 20vw;
     }
 
     /* 清除 PC 殘留的 hover，避免手機點擊閃爍 (你的 JS 已經處理了放大動畫) */
