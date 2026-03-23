@@ -388,17 +388,17 @@ span.tc_space {
     }
 
     /* ==========================================
-     🌟 中間選單：緊緊包覆，消滅所有多餘空白！
+     🌟 中間選單：滿版螢幕寬度，消除左右大空隙
   ========================================== */
     .player-menu {
       position: relative;
-      width: 100vw;
+      width: 100vw; /* 容器本身就是 100% 螢幕寬度 */
       box-sizing: border-box;
 
-      /* 🔥 關鍵 1：高度跟著寬度走，緊密包覆圖片，消滅上下空白 */
-      height: 65vw;
+      /* 🔥 高度跟著變大，保持完美比例 */
+      height: 90vw;
 
-      margin-top: 2vh; /* 縮小與上方標題的間距 */
+      margin-top: 2vh;
       bottom: auto;
       left: auto;
 
@@ -408,10 +408,9 @@ span.tc_space {
       overflow-x: auto;
       scroll-snap-type: x mandatory;
 
-      /* 🔥 關鍵 2：精準的左右對齊 (100vw - 65vw) / 2 = 17.5vw */
-      padding: 0 17.5vw;
+      /* 🔥 關鍵：左右只留非常小的 5vw 邊界 (100vw - 90vw) / 2 = 5vw */
+      padding: 0 5vw;
 
-      /* 🔥 關鍵 3：縮小圖片與圖片之間的左右縫隙 */
       gap: 15px;
 
       -webkit-overflow-scrolling: touch;
@@ -425,8 +424,8 @@ span.tc_space {
     }
 
     .player-item {
-      /* 🔥 關鍵 4：直接寫死寬度為 65vw，絕對不會再被壓縮 */
-      flex: auto;
+      /* 🔥 關鍵：機器直接放大到佔據 90% 的螢幕寬度！ */
+      flex: 0 0 90vw;
       height: 100%;
       display: flex;
       align-items: center;
