@@ -322,7 +322,7 @@ span.tc_space {
    手機版 (Mobile) 全新 App 滿版配置 (< 768px)
 ========================================= */
   @media screen and (max-width: 768px) {
-    /* 🌟 1. 鎖死螢幕：高度 100dvh，絕對禁止上下滑動 */
+    /* 🌟 1. 鎖定螢幕：設定高度剛好為 1 個螢幕 (100dvh)，不准上下捲動 */
     html,
     body {
       overflow: hidden;
@@ -330,11 +330,12 @@ span.tc_space {
       width: 100vw;
       margin: 0;
       padding: 0;
-      position: relative; /* 讓內部元素有絕對定位的基準 */
+      position: relative; /* 讓內部所有元素都能精準定位 */
     }
 
+    /* 隱藏右側音量鍵 (手機不顯示) */
     .right-vol {
-      display: none; /* 手機版隱藏右側音量鍵 */
+      display: none;
     }
 
     /* ==========================================
@@ -342,12 +343,10 @@ span.tc_space {
   ========================================== */
     .runborder {
       position: absolute;
-      top: 3vh; /* 距離頂部 3% */
+      top: 3vh; /* 距離最上方 3% */
       left: 5vw;
       width: 90vw;
-      margin: 0;
-      display: flex;
-      justify-content: center;
+      margin: 0; /* 清除電腦版設定 */
     }
     .runborder .marquee-container {
       width: 100%;
@@ -355,52 +354,61 @@ span.tc_space {
 
     .nav-center {
       position: absolute;
-      top: 9vh; /* 緊跟在跑馬燈下方 */
+      top: 10vh; /* 放在跑馬燈正下方 */
       left: 0;
       width: 100vw;
-      margin: 0;
+      margin: 0; /* 清除電腦版設定 */
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     .nav-center .logo img {
-      width: 60vw; /* Logo 大小適中 */
+      width: 55vw;
       min-width: unset;
       margin: 0;
     }
     .nav-center .title {
-      margin-top: 10px;
+      margin-top: 1.5vh;
       font-size: 11px;
-      line-height: 20px;
+      line-height: 1.6;
     }
     span.tc_space {
       letter-spacing: 2px;
     }
 
     /* ==========================================
-     🌟 中間選單：暴力置中，寬度貼合邊界不加 Padding
+     🌟 中間選單區塊：精準垂直置中，完美左右滑動
   ========================================== */
     .player-menu {
       position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%); /* 完美垂直置中魔法 */
+      top: 50%; /* 放在畫面垂直的 50% 處 */
+      transform: translateY(-50%); /* 往上提自身高度的一半，達成完美置中 */
 
-      width: 100vw; /* 寬度完全貼合手機螢幕 */
-      height: 45vh; /* 佔據螢幕約一半的高度 */
+      /* 清除電腦版的殘留設定 */
+      bottom: auto;
+      left: 0;
+      scale: 1;
+
+      width: 100vw;
+      height: auto;
       margin: 0;
-      padding: 0; /* ❌ 絕對不加 padding，避免撐破螢幕 */
+
+      /* 核心魔法：使用 border-box 讓寬度固定 100vw，
+       左右各推 20vw 的內距。
+       因為 (100vw - 60vw) / 2 = 20vw，這樣第一台機器就會不偏不倚在正中間！ */
+      box-sizing: border-box;
+      padding: 0 20vw;
 
       display: flex;
-      flex-wrap: nowrap;
       align-items: center;
+      gap: 20px;
+
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      gap: 15px; /* 機器之間的間距 */
       -webkit-overflow-scrolling: touch;
     }
 
-    /* 隱藏原生滾動條 */
+    /* 隱藏滾動條 */
     .player-menu::-webkit-scrollbar {
       display: none;
     }
@@ -409,28 +417,15 @@ span.tc_space {
     }
 
     .player-item {
-      flex: 0 0 65vw; /* 機器佔螢幕 65%，視覺比例最大方 */
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      /* 每一台機器設定為 60vw 寬度 */
+      flex: 0 0 60vw;
       scroll-snap-align: center;
-      /* 這裡不需要加 transform 動畫，因為你的 JS 已經寫得很完美了！ */
+      /* 這裡不用寫縮放，因為你的 JS 已經寫好 scale 變換了！ */
     }
 
-    .player-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain; /* 確保機器完整顯示不被裁切 */
-    }
-
-    /* 🔥 讓第一台與最後一台完美置中的墊片魔法 
-     (100vw 螢幕 - 65vw 機器) / 2 = 17.5vw */
-    .player-item:first-child {
-      margin-left: 17.5vw;
-    }
-    .player-item:last-child {
-      margin-right: 17.5vw;
+    /* 清除電腦版 hover 效果，避免手機點擊時閃爍 */
+    .player-item:hover img {
+      transform: none;
     }
 
     /* ==========================================
@@ -438,37 +433,26 @@ span.tc_space {
   ========================================== */
     .nav-left {
       position: absolute;
-      bottom: 3vh; /* 距離底部 3% */
+      bottom: 3vh; /* 距離最下方 3% */
       left: 5vw;
-      margin: 0;
-      top: auto;
-      text-align: left;
+      margin: 0; /* 清除電腦版設定 */
       width: auto;
-      font-size: 8px; /* 縮小字體呈現復古唱片感 */
+      font-size: 8px; /* 縮小字體更有質感 */
       line-height: 1.4;
       color: #666;
-      white-space: normal;
-    }
-    .nav-left p {
-      margin: 0;
-    }
-    .nav-left p br {
-      display: inline !important;
     }
 
     .nav-right {
       position: absolute;
-      bottom: 3vh; /* 與左邊文字切齊 */
+      bottom: 3vh; /* 與左側文字平行 */
       right: 5vw;
-      top: auto;
+      top: auto; /* 清除電腦版設定 */
       margin: 0;
     }
     .nav-right .nav-image {
       width: 25vw;
       max-width: 90px;
-      height: auto;
       margin: 0;
-      object-fit: contain;
     }
   }
 }
