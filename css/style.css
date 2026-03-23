@@ -373,15 +373,17 @@ span.tc_space {
     scale: 1;
     bottom: auto;
     left: auto;
-    margin-top: 4vh;
 
     display: flex;
     flex-wrap: nowrap;
     justify-content: flex-start;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    /* 【修正重點 1】：增加上下各 30px 與 40px 的 Padding，防止底部被捲動軸裁切 */
-    padding: 30px 10vw 40px 10vw;
+
+    /* 🔥 關鍵修正：增加極大的上下 Padding (上下各給 80px 的安全空間) */
+    padding: 80px 10vw;
+    margin-top: 0;
+
     gap: 20px;
     -webkit-overflow-scrolling: touch;
   }

@@ -1,57 +1,40 @@
 document.addEventListener("DOMContentLoaded", function () {
   // ==========================================
-  // 1. 播放器 Hover 與平移效果 (區分 PC 與手機)
+  // 1. 播放器選單邏輯 (嚴格區分 PC 與手機)
   // ==========================================
   const playerItems = document.querySelectorAll(".player-item");
-  let activeIndex = 0; // PC 預設選中第一個
-  let mobileActiveIndex = -1; // 手機版預設「沒有選中任何項目」
+  let activeIndex = 0;
 
-  // 判斷當前是否為手機版螢幕 (< 768px)
+  // 判斷是否為手機版 (放寬到 992px，涵蓋所有手機尺寸)
   function isMobile() {
-    return window.innerWidth <= 768;
+    return window.innerWidth <= 992;
   }
 
-  // 更新播放器位置並放大 active 項目 (★ 僅限 PC 執行)
+  // 電腦版專用：平移與放大效果
   function updatePlayerPositionsPC(activeIndex) {
-    if (isMobile()) return; // 如果是手機，立刻停止，不執行電腦的位移動畫
+    if (isMobile()) return; // 如果是手機，立刻停止執行
 
     playerItems.forEach((item, index) => {
       const offset = index - activeIndex;
       item.style.transition = "transform 0.5s ease, opacity 0.3s ease";
-      item.style.transform = `translateX(${offset * 160}px) scale(${
-        index === activeIndex ? 1.5 : 1
-      })`;
+      item.style.transform = `translateX(${offset * 160}px) scale(${index === activeIndex ? 1.5 : 1})`;
       item.style.zIndex = index === activeIndex ? 10 : 1;
       item.style.opacity = index === activeIndex ? 1 : 0.6;
     });
   }
 
-  // 頁面載入時的初始化
+  // 頁面載入時初始化
   if (playerItems.length > 0) {
     if (!isMobile()) {
       updatePlayerPositionsPC(activeIndex);
     } else {
-      // 手機版初始狀態：讓大家稍微縮小一點點、變半透明
+      // 手機版初始狀態：全部稍微縮小變暗
       playerItems.forEach((item) => {
-        item.style.transform = "scale(0.95)";
-        item.style.opacity = "0.7";
+        item.style.transform = "scale(0.85)";
+        item.style.opacity = "0.6";
       });
     }
   }
-
-  // 監聽視窗大小改變 (避免電腦縮小視窗時跑版)
-  window.addEventListener("resize", () => {
-    if (isMobile()) {
-      playerItems.forEach((item) => {
-        item.style.transform = "scale(0.95)";
-        item.style.opacity = "0.7";
-        item.style.zIndex = "";
-      });
-      mobileActiveIndex = -1; // 重置選取狀態
-    } else {
-      updatePlayerPositionsPC(activeIndex);
-    }
-  });
 
   // 綁定滑鼠與點擊事件
   playerItems.forEach((item, index) => {
@@ -67,35 +50,42 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // --- 點擊事件：處理跳轉與「手機版雙擊邏輯」 ---
-    item.addEventListener("click", (e) => {
-      const pageUrl = item.getAttribute("data-href");
+    // --- 點擊事件：嚴格的兩階段驗證 ---
+    item.addEventListener("click", function (e) {
+      const pageUrl = this.getAttribute("data-href");
 
-      // 【手機版邏輯】：第一次選中(微放大)，第二次跳轉
       if (isMobile()) {
-        if (mobileActiveIndex !== index) {
-          e.preventDefault(); // 阻止第一次點擊跳轉網頁
-          mobileActiveIndex = index; // 紀錄目前選中的是誰
+        // 檢查這個選項是不是「已經被選中」了
+        const isSelected = this.classList.contains("mobile-selected");
 
-          // 視覺回饋：放大選中的，縮小其他的
-          playerItems.forEach((el, i) => {
-            el.style.transition = "transform 0.3s ease, opacity 0.3s ease";
-            // 手機版放大倍率改為 1.15 倍就好，避免過度放大被裁切
-            el.style.transform = i === index ? "scale(1.15)" : "scale(0.85)";
-            el.style.opacity = i === index ? "1" : "0.5";
+        if (!isSelected) {
+          e.preventDefault(); // 🛑 強制阻擋跳轉
+
+          // 1. 先把所有機器重置為未選中、縮小狀態
+          playerItems.forEach((el) => {
+            el.classList.remove("mobile-selected");
+            el.style.transform = "scale(0.85)";
+            el.style.opacity = "0.6";
           });
 
-          // 自動將選中的播放器「滑動到畫面正中央」
-          item.scrollIntoView({
+          // 2. 把當前點擊的這台機器貼上「選中標籤」，並放大
+          this.classList.add("mobile-selected");
+          this.style.transform = "scale(1.15)";
+          this.style.opacity = "1";
+
+          // 3. 自動平滑滾動讓這台機器置中
+          this.scrollIntoView({
             behavior: "smooth",
             inline: "center",
             block: "nearest",
           });
-          return; // 結束執行，不要進入下面的跳轉程式碼
+
+          return; // 🛑 程式在此終止，絕對不會進入下方的 loading 階段
         }
+        // 如果 isSelected 是 true，代表這是第二次點擊，程式就會順利往下走！
       }
 
-      // 【跳轉邏輯】 (PC 會直接執行；手機版如果是點擊「已經選中」的項目，也會執行)
+      // --- 進入 Loading 與跳轉邏輯 ---
       const loadingScreen = document.getElementById("loading");
       if (loadingScreen && pageUrl) {
         loadingScreen.style.display = "flex";
@@ -109,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ==========================================
-  // 2. 背景音樂與音量鍵控制邏輯 (保持原樣，沒有更動)
+  // 2. 背景音樂與音量鍵控制邏輯 (維持不變)
   // ==========================================
   const bgm = document.getElementById("bgm");
   const rightVol = document.querySelector(".right-vol");
