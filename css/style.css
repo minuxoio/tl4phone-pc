@@ -445,9 +445,9 @@ span.tc_space {
       margin: 0 !important;
       text-align: left;
       width: auto;
-      font-size: 8px;
+      font-size: 4px;
       line-height: 1.4;
-      color: #666;
+      color: #000000;
       white-space: normal;
     }
     .nav-left p {
