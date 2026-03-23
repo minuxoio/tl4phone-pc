@@ -297,7 +297,7 @@ span.tc_space {
 
   .nav-left {
     position: absolute;
-    top: 10vh;
+    top: 7vh;
     left: 5vw;
     margin: 0;
     width: 30vw;
@@ -328,7 +328,7 @@ span.tc_space {
 
   .right-vol {
     position: absolute;
-    top: 10vh;
+    top: 7vh;
     right: 5vw;
     margin: 0;
     display: block;
@@ -339,7 +339,7 @@ span.tc_space {
   ========================================== */
   .nav-center {
     position: relative;
-    margin-top: 25vh; /* 🔥 往下推 25vh，完美避開第 1 層的東西 */
+    margin-top: 10vh; /* 🔥 往下推 25vh，完美避開第 1 層的東西 */
     width: 100vw;
     display: flex;
     flex-direction: column;
