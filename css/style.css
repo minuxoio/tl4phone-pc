@@ -269,42 +269,46 @@ span.tc_space {
     min-height: 100vh;
   }
 
+  /* 🌟 核心修改：改用 Grid (網格) 佈局，完美解決間距與並排問題 */
   body {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-bottom: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 把畫面直向切成左右兩半 */
+    grid-template-rows: auto auto auto auto; /* 總共 4 個橫排 */
+    align-content: center; /* 讓所有內容在螢幕上垂直置中，畫面更平衡 */
+    padding-bottom: 20px;
+    row-gap: 3vh; /* 統一設定每個區塊之間的上下間距 */
   }
 
   .right-vol {
     display: none;
   }
 
-  /* [順序 1] 跑馬燈 */
+  /* [第 1 排] 跑馬燈：橫跨左右兩格 */
   .runborder {
-    order: 1;
+    grid-column: 1 / -1;
+    grid-row: 1;
     position: relative;
-    margin: 3vh auto 0 auto;
     width: 90vw;
-    display: flex;
-    justify-content: center;
+    justify-self: center; /* 水平置中 */
+    margin: 0;
   }
   .runborder .marquee-container {
     width: 100%;
   }
 
-  /* [順序 2] 中間標題 */
+  /* [第 2 排] 中間標題：橫跨左右兩格 */
   .nav-center {
-    order: 2;
+    grid-column: 1 / -1;
+    grid-row: 2;
     position: relative;
-    margin-top: 2vh;
     width: 100%;
+    margin-top: 0;
   }
   .nav-center .logo img {
     width: 55vw;
     min-width: unset;
+    margin: 0 auto;
   }
   .nav-center .title {
     margin-top: 15px;
@@ -315,9 +319,10 @@ span.tc_space {
     letter-spacing: 2px;
   }
 
-  /* [順序 3] 滾動選單 */
+  /* [第 3 排] 滾動選單：橫跨左右兩格 */
   .player-menu {
-    order: 3;
+    grid-column: 1 / -1;
+    grid-row: 3;
     position: relative;
     width: 100vw;
     height: auto;
@@ -331,8 +336,9 @@ span.tc_space {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
 
-    padding: 40px 10vw;
-    margin-top: 1vh;
+    /* 縮小這裡的 padding，因為 Grid 已經處理了大部分間距 */
+    padding: 10px 10vw;
+    margin-top: 0;
     gap: 20px;
     -webkit-overflow-scrolling: touch;
   }
@@ -356,16 +362,19 @@ span.tc_space {
     transform: scale(1.05);
   }
 
-  /* [改為絕對定位] 底部文字 (左下角) */
+  /* [第 4 排，左側] 左下文字：只佔左半邊的網格 */
   .nav-left {
-    position: absolute;
-    bottom: 20px; /* 保持距離底部 20px */
-    left: 5vw; /* 保持靠左 */
-    margin: 0;
+    grid-column: 1 / 2;
+    grid-row: 4;
+    position: relative;
+    bottom: auto;
+    left: auto; /* 解除絕對定位 */
+    justify-self: start; /* 靠左 */
+    align-self: end; /* 靠底對齊右邊圖片 */
+    margin: 0 0 0 5vw;
     text-align: left;
-    width: auto; /* 讓 <br> 正常運作 */
-    font-size: 5px;
-
+    width: auto;
+    font-size: 8px;
     line-height: 1.4;
     color: #666;
     white-space: normal;
@@ -374,32 +383,27 @@ span.tc_space {
   .nav-left p {
     margin: 0;
   }
-
-  /* 強制顯示換行 */
   .nav-left p br {
     display: inline !important;
   }
 
-  /* [改為絕對定位] 標籤圖 (右下角) */
+  /* [第 4 排，右側] 右下圖標：只佔右半邊的網格 */
   .nav-right {
-    position: absolute;
-
-    /* 把圖片往上提 */
-    bottom: 20px;
-
-    right: 5vw; /* 保持靠右 */
-    margin: 0;
-    top: auto;
+    grid-column: 2 / -1;
+    grid-row: 4;
+    position: relative;
+    bottom: auto;
+    right: auto;
+    top: auto; /* 解除絕對定位 */
+    justify-self: end; /* 靠右 */
+    align-self: end; /* 靠底對齊左邊文字 */
+    margin: 0 5vw 0 0;
   }
 
   .nav-right .nav-image {
-    /* 放大圖片 */
-    width: 40vw;
-
-    /*提高最大寬度限制 (70px -> 100px)，確保在大螢幕手機上也有存在感 */
+    width: 28vw;
     max-width: 100px;
-
     margin-top: 0;
-    object-fit: contain; /* 確保不變形 */
+    object-fit: contain;
   }
 }
