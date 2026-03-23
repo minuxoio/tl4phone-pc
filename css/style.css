@@ -396,50 +396,51 @@ span.tc_space {
     }
 
     /* ==========================================
-     第 2 層：Logo + 呼吸文字
+     第二層：Logo + 呼吸文字 (保留你的微調數值)
   ========================================== */
     .nav-center {
       position: relative;
-      margin-top: 10vh;
+      /* 往下推 25vh，完美避開上方第一層的所有東西，絕不重疊！ */
+      margin-top: 25vh;
       width: 100vw;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-
     .nav-center .logo img {
-      width: 60vw;
+      width: 55vw; /* 你的微調數值 */
       min-width: unset;
       margin: 0;
     }
-
     .nav-center .title {
-      margin-top: 15px;
-      font-size: 11px;
-      line-height: 1.8;
+      margin-top: 10px; /* 你的微調數值 */
+      font-size: 11px; /* 你的微調數值 */
+      line-height: 20px; /* 你的微調數值 */
     }
     span.tc_space {
-      letter-spacing: 2px;
+      letter-spacing: 2px; /* 你的微調數值 */
     }
 
     /* ==========================================
-     第 3 層：滾動選單 (機器列表)
+     第三層：滾動選單 (接在第二層下方)
   ========================================== */
     .player-menu {
       position: relative;
       width: 100vw;
       height: auto;
-      margin-top: 20vh; /* 距離上方呼吸字體的距離 */
-      margin-bottom: 10vh; /* 底部留一點白 */
+
+      margin-top: 4vh; /* 距離上方呼吸字的距離 */
+
+      /* 清除 PC 版的干擾設定 */
       bottom: auto;
-      left: auto;
+      left: 0;
+      scale: 1;
 
       display: flex;
-      flex-wrap: nowrap;
       align-items: center;
+      flex-wrap: nowrap;
 
-      /* 這裡絕對不加 padding，寬度直接 100% 貼齊螢幕 */
-      padding: 0;
+      padding: 0; /* 堅決不加 padding 撐破畫面 */
 
       overflow-x: auto;
       scroll-snap-type: x mandatory;
@@ -455,7 +456,7 @@ span.tc_space {
     }
 
     .player-item {
-      flex: 0 0 60vw; /* 機器寬度佔螢幕 60% */
+      flex: 0 0 65vw; /* 機器佔螢幕寬度 65% */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -463,12 +464,21 @@ span.tc_space {
     }
 
     .player-item img {
-      width: 800%;
-      height: 80%;
+      width: 100%;
+      height: auto;
       object-fit: contain;
     }
 
-    /* 清除 PC 殘留的 hover，避免手機點擊閃爍 (你的 JS 已經處理了放大動畫) */
+    /* 🔥 讓第一台與最後一台完美置中的墊片魔法 
+     (100vw 螢幕 - 65vw 機器) / 2 = 17.5vw */
+    .player-item:first-child {
+      margin-left: 17.5vw;
+    }
+    .player-item:last-child {
+      margin-right: 17.5vw;
+    }
+
+    /* 取消 PC 的 hover 效果，避免手機點擊閃爍 (JS 已處理放大縮小) */
     .player-item:hover img,
     .player-item:active img {
       transform: none;
