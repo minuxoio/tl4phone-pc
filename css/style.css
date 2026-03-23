@@ -1,3 +1,6 @@
+/* =========================================
+   原本的 PC 版樣式 (保持不變)
+========================================= */
 html,
 body {
   margin: 0; /* 移除邊距 */
@@ -19,8 +22,6 @@ body {
     "Microsoft JhengHei",
     /* 後備字型 */ sans-serif;
   background-color: #f9f9f9;
-  /* <uniquifier>: Use a unique and descriptive class name*/
-  /*<weight>: Use a value from 100 to 700*/
 
   .roboto-mono-uniquifier {
     font-family: "Roboto Mono", monospace;
@@ -28,8 +29,6 @@ body {
     font-weight: weight;
     font-style: normal;
   }
-  /* uniquifier>: Use a unique and descriptive class name*/
-  /*<weight>: Use a value from 100 to 900*/
 
   .noto-sans-tc-uniquifier {
     font-family: "Noto Sans TC", sans-serif;
@@ -173,19 +172,19 @@ span.tc_space {
 /* 呼吸效果動畫 */
 @keyframes breathing {
   0% {
-    opacity: 1; /* 實色 */
+    opacity: 1;
   }
   25% {
-    opacity: 0; /* 實色 */
+    opacity: 0;
   }
   50% {
-    opacity: 1; /* 半透明 */
+    opacity: 1;
   }
   75% {
-    opacity: 0; /* 回到實色 */
+    opacity: 0;
   }
   100% {
-    opacity: 1; /* 回到實色 */
+    opacity: 1;
   }
 }
 
@@ -268,47 +267,143 @@ span.tc_space {
 
 /* 打字機效果容器 */
 #loading {
-  /* 整個蓋住畫面的底色色塊 */
   position: fixed;
   width: 100%;
   height: 100%;
   left: 0%;
   top: 0%;
-  background-color: rgba(244, 244, 244, 0.9); /* 略微透明背景 */
+  background-color: rgba(244, 244, 244, 0.9);
   z-index: 9999;
-  display: none; /* 預設隱藏 */
+  display: none;
   justify-content: center;
   align-items: center;
-  display: flex; /* 使用 flex 來居中對齊 */
-  display: none; /* 預設隱藏 */
 }
 
 .loadingword {
   font-size: 15px;
   font-weight: 500;
-  white-space: nowrap; /* 防止文字換行 */
-  overflow: hidden; /* 超出範圍的文字隱藏 */
-  border-right: 2px solid black; /* 模擬打字機游標 */
-  width: 0; /* 初始寬度為 0 */
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid black;
+  width: 0;
   animation:
     typing 1s steps(9, end) infinite,
-    blink 0.7s step-end infinite; /* 重設打字效果 */
-  animation-fill-mode: forwards; /* 動畫結束後保留狀態 */
+    blink 0.7s step-end infinite;
+  animation-fill-mode: forwards;
 }
 
-/* 打字動畫 */
 @keyframes typing {
   from {
-    width: 0; /* 開始時寬度為 0 */
+    width: 0;
   }
   to {
-    width: 12ch; /* 顯示整段文字 */
+    width: 12ch;
   }
 }
 
-/* 游標閃爍效果 */
 @keyframes blink {
   50% {
-    border-color: transparent; /* 使游標隱藏 */
+    border-color: transparent;
+  }
+}
+
+/* =========================================
+   手機版 (Mobile) 專屬樣式設定 (< 768px)
+   此區塊會覆寫上方不適合手機的絕對定位
+========================================= */
+@media screen and (max-width: 768px) {
+  /* 1. 解除畫面鎖定，允許垂直滾動 */
+  html,
+  body {
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 20px; /* 確保底部不會貼死 */
+  }
+
+  /* 2. 將 body 轉為彈性盒子，讓內容垂直置中排列 */
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  /* 3. 隱藏會干擾視覺的右側裝飾圖與音量區塊 */
+  .nav-right,
+  .right-vol {
+    display: none;
+  }
+
+  /* 4. 將跑馬燈獨立拉出置頂，加寬顯示 */
+  .runborder {
+    position: relative;
+    margin: 3vh auto 0 auto;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+  }
+  .runborder .marquee-container {
+    width: 100%; /* 讓跑馬燈在手機上佔滿 90vw */
+  }
+
+  /* 5. 標題與 Logo：拿掉負的位移，置中放大 */
+  .nav-center {
+    position: relative;
+    margin-top: 5vh;
+    width: 100%;
+  }
+  .nav-center .logo img {
+    width: 80vw; /* Logo 隨手機螢幕變大 */
+    min-width: unset;
+  }
+  .nav-center .title {
+    margin-top: 30px;
+    font-size: 14px; /* 字體微調小，避免擠壓 */
+    line-height: 28px;
+  }
+  span.tc_space {
+    letter-spacing: 4px; /* 手機螢幕窄，縮小字距防止換行破圖 */
+  }
+
+  /* 6. 核心：播放器旋轉選單改造 */
+  .player-menu {
+    position: relative;
+    width: 90vw;
+    height: auto;
+    scale: 1; /* 取消原本的整體縮小 */
+    bottom: auto; /* 取消絕對定位的底部牽制 */
+    left: auto;
+    margin-top: 5vh;
+    flex-wrap: wrap; /* 開啟自動換行！ */
+    justify-content: center;
+    gap: 15px; /* 設定上下左右的間隔 */
+  }
+
+  /* 播放器按鈕：改為一排兩個 (40%)，讓手指好點擊 */
+  .player-item {
+    flex: 0 0 42%;
+    margin-bottom: 15px;
+  }
+
+  /* 手機沒有游標，不需要 hover 放大，點擊時微縮放即可 */
+  .player-item:hover img {
+    transform: scale(1);
+  }
+  .player-item:active img {
+    transform: scale(1.05); /* 點擊回饋 */
+  }
+
+  /* 7. 左側版權宣告：移到網頁最下方 */
+  .nav-left {
+    position: relative;
+    margin: 5vh auto 2vh auto;
+    top: auto;
+    left: auto;
+    text-align: center;
+    width: 90vw;
+    font-size: 10px;
+    line-height: 1.5;
+    color: #666;
   }
 }
