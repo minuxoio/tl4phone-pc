@@ -426,7 +426,7 @@ span.tc_space {
 
     .player-item {
       /* 🔥 關鍵 4：直接寫死寬度為 65vw，絕對不會再被壓縮 */
-      flex: 0 0 65vw;
+      flex: auto;
       height: 100%;
       display: flex;
       align-items: center;
