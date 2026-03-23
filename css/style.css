@@ -331,7 +331,7 @@ span.tc_space {
    手機版 (Mobile) 專屬樣式設定 (< 768px)
 ========================================= */
   @media screen and (max-width: 768px) {
-    /* 🔥 1. 終極鎖定：不准滑動，鎖定一個螢幕高 */
+    /* 1. 鎖定螢幕：不准滑動 */
     html,
     body {
       overflow: hidden !important;
@@ -347,9 +347,7 @@ span.tc_space {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      /* 給底部版權文字預留絕對安全區，選單絕對不會掉進這個區域 */
-      padding-bottom: 15vh;
+      padding-bottom: 15vh; /* 底部安全區 */
     }
 
     header.navigation {
@@ -398,17 +396,17 @@ span.tc_space {
     }
 
     /* ==========================================
-     🌟 中間選單：強制置中！絕對不會再亂跑！
+     🌟 中間選單：修復寬度暴走問題！
   ========================================== */
     .player-menu {
       order: 3;
       position: relative;
       width: 100vw;
 
-      /* 🔥 關鍵修復 1：寫死安全高度，它絕對不會再被壓縮或變形 */
-      height: 45vh;
+      /* 🔥 致命關鍵修復：有了這行，padding 就不會撐破 100vw 的寬度！ */
+      box-sizing: border-box;
 
-      /* 🔥 關鍵修復 2：利用 margin auto 將這個區塊「完美懸浮」在剩下的空間正中間 */
+      height: 45vh;
       margin-top: auto;
       margin-bottom: auto;
 
@@ -418,6 +416,7 @@ span.tc_space {
       overflow-x: auto;
       scroll-snap-type: x mandatory;
 
+      /* (100vw - 55vw) / 2 = 22.5vw，讓第一台與最後一台完美置中 */
       padding: 0 22.5vw;
       gap: 20px;
       -webkit-overflow-scrolling: touch;
@@ -432,7 +431,7 @@ span.tc_space {
 
     .player-item {
       flex: 0 0 55vw;
-      height: 100%; /* 確保容器填滿 45vh */
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -442,7 +441,7 @@ span.tc_space {
     .player-item img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* 圖片完美等比縮放，不會被切掉 */
+      object-fit: contain;
     }
 
     .player-item:hover img {
@@ -453,7 +452,7 @@ span.tc_space {
     }
 
     /* ==========================================
-     🌟 底部固定區塊：乖乖釘死在最下面
+     🌟 底部固定區塊
   ========================================== */
     .nav-left {
       position: absolute;
