@@ -318,4 +318,157 @@ span.tc_space {
   span.tc_space {
     letter-spacing: 2px;
   }
+  /* =========================================
+   手機版 (Mobile) 全新 App 滿版配置 (< 768px)
+========================================= */
+  @media screen and (max-width: 768px) {
+    /* 🌟 1. 鎖死螢幕：高度 100dvh，絕對禁止上下滑動 */
+    html,
+    body {
+      overflow: hidden;
+      height: 100dvh;
+      width: 100vw;
+      margin: 0;
+      padding: 0;
+      position: relative; /* 讓內部元素有絕對定位的基準 */
+    }
+
+    .right-vol {
+      display: none; /* 手機版隱藏右側音量鍵 */
+    }
+
+    /* ==========================================
+     🌟 頂部區塊：釘死在畫面上方
+  ========================================== */
+    .runborder {
+      position: absolute;
+      top: 3vh; /* 距離頂部 3% */
+      left: 5vw;
+      width: 90vw;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .runborder .marquee-container {
+      width: 100%;
+    }
+
+    .nav-center {
+      position: absolute;
+      top: 9vh; /* 緊跟在跑馬燈下方 */
+      left: 0;
+      width: 100vw;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-center .logo img {
+      width: 60vw; /* Logo 大小適中 */
+      min-width: unset;
+      margin: 0;
+    }
+    .nav-center .title {
+      margin-top: 10px;
+      font-size: 11px;
+      line-height: 20px;
+    }
+    span.tc_space {
+      letter-spacing: 2px;
+    }
+
+    /* ==========================================
+     🌟 中間選單：暴力置中，寬度貼合邊界不加 Padding
+  ========================================== */
+    .player-menu {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%); /* 完美垂直置中魔法 */
+
+      width: 100vw; /* 寬度完全貼合手機螢幕 */
+      height: 45vh; /* 佔據螢幕約一半的高度 */
+      margin: 0;
+      padding: 0; /* ❌ 絕對不加 padding，避免撐破螢幕 */
+
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 15px; /* 機器之間的間距 */
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* 隱藏原生滾動條 */
+    .player-menu::-webkit-scrollbar {
+      display: none;
+    }
+    .player-menu {
+      scrollbar-width: none;
+    }
+
+    .player-item {
+      flex: 0 0 65vw; /* 機器佔螢幕 65%，視覺比例最大方 */
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      scroll-snap-align: center;
+      /* 這裡不需要加 transform 動畫，因為你的 JS 已經寫得很完美了！ */
+    }
+
+    .player-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* 確保機器完整顯示不被裁切 */
+    }
+
+    /* 🔥 讓第一台與最後一台完美置中的墊片魔法 
+     (100vw 螢幕 - 65vw 機器) / 2 = 17.5vw */
+    .player-item:first-child {
+      margin-left: 17.5vw;
+    }
+    .player-item:last-child {
+      margin-right: 17.5vw;
+    }
+
+    /* ==========================================
+     🌟 底部區塊：釘死在畫面下方
+  ========================================== */
+    .nav-left {
+      position: absolute;
+      bottom: 3vh; /* 距離底部 3% */
+      left: 5vw;
+      margin: 0;
+      top: auto;
+      text-align: left;
+      width: auto;
+      font-size: 8px; /* 縮小字體呈現復古唱片感 */
+      line-height: 1.4;
+      color: #666;
+      white-space: normal;
+    }
+    .nav-left p {
+      margin: 0;
+    }
+    .nav-left p br {
+      display: inline !important;
+    }
+
+    .nav-right {
+      position: absolute;
+      bottom: 3vh; /* 與左邊文字切齊 */
+      right: 5vw;
+      top: auto;
+      margin: 0;
+    }
+    .nav-right .nav-image {
+      width: 25vw;
+      max-width: 90px;
+      height: auto;
+      margin: 0;
+      object-fit: contain;
+    }
+  }
 }
