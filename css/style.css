@@ -359,22 +359,25 @@ span.tc_space {
   /* [改為絕對定位] 底部文字 (左下角) */
   .nav-left {
     position: absolute;
-    bottom: 20px;
-    left: 5vw;
+    bottom: 20px; /* 保持距離底部 20px */
+    left: 5vw; /* 保持靠左 */
     margin: 0;
     text-align: left;
-    width: auto; /* 讓它自然展開，不限制寬度 */
-    font-size: 9px;
+    width: auto; /* 讓 <br> 正常運作 */
+
+    /* 🌟 修改重點 1：將字體從 9px 縮小到 8px，增加精緻感 */
+    font-size: 8px;
+
     line-height: 1.4;
     color: #666;
-    white-space: normal; /* 確保文字排版正常 */
+    white-space: normal;
   }
 
   .nav-left p {
     margin: 0;
   }
 
-  /* 🔥 終極指令：強制手機版顯示所有的 <br> 換行標籤 */
+  /* 強制顯示換行 */
   .nav-left p br {
     display: inline !important;
   }
@@ -382,15 +385,23 @@ span.tc_space {
   /* [改為絕對定位] 標籤圖 (右下角) */
   .nav-right {
     position: absolute;
-    bottom: 15px;
-    right: 5vw;
+
+    /* 🌟 修改重點 2：稍微把圖片往上提一點點 (15px -> 20px)，與左邊文字對齊 */
+    bottom: 20px;
+
+    right: 5vw; /* 保持靠右 */
     margin: 0;
     top: auto;
   }
 
   .nav-right .nav-image {
-    width: 18vw;
-    max-width: 70px;
+    /* 🌟 修改重點 3：放大圖片 (18vw -> 28vw) */
+    width: 28vw;
+
+    /* 🌟 修改重點 4：提高最大寬度限制 (70px -> 100px)，確保在大螢幕手機上也有存在感 */
+    max-width: 100px;
+
     margin-top: 0;
+    object-fit: contain; /* 確保不變形 */
   }
 }
