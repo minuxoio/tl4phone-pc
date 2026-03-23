@@ -337,18 +337,23 @@ span.tc_space {
     position: relative;
     width: 100vw;
 
-    /* 吸收剩下的所有高度，這會把「跑馬燈」往上推到頂、「版權文字」往下推到底 */
     flex-grow: 1;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-
     overflow-x: auto;
     scroll-snap-type: x mandatory;
 
-    padding: 0 10vw;
-    margin-top: 0; /* 不需要 margin，交給 flex-grow 處理 */
-    gap: 20px;
+    /* 🌟 修改 1：調整左右留白 */
+    /* 因為機器變大了(70vw)，(100-70)/2 = 15，所以左右各留 15vw，確保第一台能完美置中 */
+    padding: 0 15vw;
+
+    margin-top: 0;
+
+    /* 🌟 修改 2：拉開間距 */
+    /* 機器變大後，間距稍微拉開到 30px，滑動起來會更有單個專輯的聚焦感 */
+    gap: 30px;
+
     -webkit-overflow-scrolling: touch;
   }
 
@@ -360,8 +365,11 @@ span.tc_space {
   }
 
   .player-item {
-    flex: 0 0 42%;
     scroll-snap-align: center;
+
+    /* 🌟 修改 3：大幅放大播放器 */
+    /* 把原本的 42% 直接放大到 70%！這樣圖片的高度會等比放大，視覺上就會佔據大約一半的手機螢幕 */
+    flex: 0 0 70%;
   }
 
   .player-item:hover img {
@@ -383,7 +391,7 @@ span.tc_space {
     margin: 0;
     text-align: left;
     width: auto;
-    font-size: 5px;
+    font-size: 8px;
     line-height: 1.4;
     color: #666;
     white-space: normal;
