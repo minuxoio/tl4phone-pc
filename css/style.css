@@ -340,7 +340,7 @@ span.tc_space {
   ========================================== */
   .nav-center {
     position: relative;
-    margin-top: 10vh; /* 🔥 往下推 25vh，完美避開第 1 層的東西 */
+    margin-top: 15vh; /* 🔥 往下推 25vh，完美避開第 1 層的東西 */
     width: 100vw;
     display: flex;
     flex-direction: column;
