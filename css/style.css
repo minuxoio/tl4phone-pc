@@ -393,29 +393,33 @@ span.tc_space {
     }
 
     /* ==========================================
-     🌟 中間選單：暴力垂直置中！絕對不亂跑！
+     🌟 中間選單：貼齊手機左右邊界，寬度隨螢幕變動！
   ========================================== */
     .player-menu {
       position: absolute !important;
-      top: 50% !important; /* 從畫面上方算起 50% 的位置 */
-      left: 0 !important;
-      transform: translateY(
-        -50%
-      ) !important; /* 往回拉一半高度，達成完美的正中央 */
+      top: 50% !important;
+      left: 0 !important; /* 🔥 絕對靠齊手機最左邊！ */
+      transform: translateY(-50%) !important;
 
+      /* 🔥 寬度永遠等於手機螢幕寬度 (100vw) */
       width: 100vw !important;
       height: 45vh !important;
       box-sizing: border-box !important;
 
       margin: 0 !important;
-      padding: 0 22.5vw !important; /* 讓第一台機器精準置中 */
+
+      /* 🔥 拿掉之前那塊巨大的空白墊片！只在左右保留正常的 5vw 小邊距 */
+      padding: 0 5vw !important;
 
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      gap: 20px;
+
+      /* 調整機器與機器之間的空隙 */
+      gap: 15px !important;
+
       -webkit-overflow-scrolling: touch;
     }
 
@@ -427,11 +431,14 @@ span.tc_space {
     }
 
     .player-item {
-      flex: 0 0 55vw !important;
+      /* 🔥 機器寬度：佔螢幕的 60% (大小剛好，不會太大也不會太小) */
+      flex: 0 0 60vw !important;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
+
+      /* 讓滑動時，每一台機器都會自動吸附到畫面中間 */
       scroll-snap-align: center;
     }
 
