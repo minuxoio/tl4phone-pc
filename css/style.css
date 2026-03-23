@@ -325,12 +325,12 @@ span.tc_space {
   @media screen and (max-width: 768px) {
     html,
     body {
-      overflow: hidden !important;
-      height: 100dvh !important;
-      width: 100vw !important;
+      overflow: hidden;
+      height: 100dvh;
+      width: 100vw;
       margin: 0;
       padding: 0;
-      position: relative !important; /* 所有東西的定位基準 */
+      position: relative; /* 所有東西的定位基準 */
     }
 
     header.navigation {
@@ -344,11 +344,11 @@ span.tc_space {
 
     /* 頂部 */
     .runborder {
-      position: absolute !important;
-      top: 3vh !important;
-      left: 5vw !important;
-      width: 90vw !important;
-      margin: 0 !important;
+      position: absolute;
+      top: 3vh;
+      left: 5vw;
+      width: 90vw;
+      margin: 0;
       display: flex;
       justify-content: center;
     }
@@ -357,11 +357,11 @@ span.tc_space {
     }
 
     .nav-center {
-      position: absolute !important;
-      top: 9vh !important;
-      left: 0 !important;
-      width: 100vw !important;
-      margin: 0 !important;
+      position: absolute;
+      top: 9vh;
+      left: 0;
+      width: 100vw;
+      margin: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -382,22 +382,22 @@ span.tc_space {
 
     /* 中間選單 */
     .player-menu {
-      position: absolute !important;
-      top: 15vh !important;
-      left: 0 !important;
-      transform: translateY(-50%) !important;
+      position: absolute;
+      top: 15vh;
+      left: 0;
+      transform: translateY(-50%);
       scale: 1 !important;
-      width: 100vw !important;
-      height: 30vh !important;
-      padding: 0 !important;
-      margin: 0 !important;
+      width: 100vw;
+      height: 30vh;
+      padding: 0;
+      margin: 0;
 
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      gap: 15px !important;
+      gap: 15px;
       -webkit-overflow-scrolling: touch;
     }
 
@@ -424,10 +424,10 @@ span.tc_space {
     }
 
     .player-item:first-child {
-      margin-left: 20vw !important;
+      margin-left: 20vw !;
     }
     .player-item:last-child {
-      margin-right: 20vw !important;
+      margin-right: 20vw;
     }
 
     .player-item:hover img {
@@ -439,10 +439,10 @@ span.tc_space {
 
     /* 底部 */
     .nav-left {
-      position: absolute !important;
-      bottom: 4vh !important;
-      left: 5vw !important;
-      margin: 0 !important;
+      position: absolute;
+      bottom: 4vh;
+      left: 5vw;
+      margin: 0;
       text-align: left;
       width: auto;
       font-size: 8px;
@@ -454,19 +454,19 @@ span.tc_space {
       margin: 0;
     }
     .nav-left p br {
-      display: inline !important;
+      display: inline;
     }
 
     .nav-right {
-      position: absolute !important;
-      bottom: 4vh !important;
-      right: 5vw !important;
-      top: auto !important;
-      margin: 0 !important;
+      position: absolute;
+      bottom: 4vh;
+      right: 5vw t;
+      top: auto;
+      margin: 0;
     }
     .nav-right .nav-image {
       width: 40vw;
-      margin: 0 !important;
+      margin: 0;
       object-fit: contain;
     }
   }
