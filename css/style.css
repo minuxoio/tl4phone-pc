@@ -309,17 +309,12 @@ span.tc_space {
 
 /* =========================================
    手機版 (Mobile) 專屬樣式設定 (< 768px)
-   此區塊會覆寫上方不適合手機的絕對定位
-========================================= */
-/* =========================================
-   手機版 (Mobile) 專屬樣式設定 (< 768px)
 ========================================= */
 @media screen and (max-width: 768px) {
-  /* 1. 解除畫面鎖定，開啟垂直滾動，並設定 Flex 垂直排列 */
   html,
   body {
     overflow-y: auto;
-    overflow-x: hidden; /* 防止整個網頁左右晃動 */
+    overflow-x: hidden;
     height: auto;
     min-height: 100vh;
   }
@@ -329,17 +324,12 @@ span.tc_space {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-bottom: 40px; /* 底部留白 */
+    padding-bottom: 40px;
   }
 
-  /* 隱藏右上角音量圖示 (如果手機版不需要的話) */
   .right-vol {
     display: none;
   }
-
-  /* =========================================
-     設定區塊順序 (Order 1 ~ 4)
-  ========================================= */
 
   /* [順序 1] 跑馬燈 */
   .runborder {
@@ -354,7 +344,7 @@ span.tc_space {
     width: 100%;
   }
 
-  /* [順序 2] 中間標題 (Logo + 呼吸文字) */
+  /* [順序 2] 中間標題 */
   .nav-center {
     order: 2;
     position: relative;
@@ -362,7 +352,7 @@ span.tc_space {
     width: 100%;
   }
   .nav-center .logo img {
-    width: 75vw; /* Logo 大小 */
+    width: 75vw;
     min-width: unset;
   }
   .nav-center .title {
@@ -371,57 +361,55 @@ span.tc_space {
     line-height: 28px;
   }
   span.tc_space {
-    letter-spacing: 4px; /* 縮小字距避免換行破圖 */
+    letter-spacing: 4px;
   }
 
-  /* [順序 3] 滾動選單 (改為橫向滑動 Carousel) */
+  /* [順序 3] 滾動選單 */
   .player-menu {
     order: 3;
     position: relative;
-    width: 100vw; /* 佔滿螢幕寬度以利滾動 */
+    width: 100vw;
     height: auto;
     scale: 1;
     bottom: auto;
     left: auto;
     margin-top: 4vh;
 
-    /* 橫向滾動核心設定 */
     display: flex;
-    flex-wrap: nowrap; /* 強制不換行 */
+    flex-wrap: nowrap;
     justify-content: flex-start;
-    overflow-x: auto; /* 開啟橫向滾動 */
-    scroll-snap-type: x mandatory; /* 讓滾動有「吸附」的流暢感 */
-    padding: 0 10vw; /* 左右留白，讓第一台機器置中 */
-    gap: 20px; /* 機器之間的距離 */
-    -webkit-overflow-scrolling: touch; /* 讓 iOS 滾動更滑順 */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    /* 【修正重點 1】：增加上下各 30px 與 40px 的 Padding，防止底部被捲動軸裁切 */
+    padding: 30px 10vw 40px 10vw;
+    gap: 20px;
+    -webkit-overflow-scrolling: touch;
   }
 
-  /* 隱藏滾動條，讓視覺更乾淨乾淨 */
   .player-menu::-webkit-scrollbar {
     display: none;
   }
   .player-menu {
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
   }
 
-  /* 設定每台播放器的大小 */
   .player-item {
-    flex: 0 0 55%; /* 每台機器佔螢幕寬度 55% */
-    scroll-snap-align: center; /* 滾動時自動對齊正中間 */
+    flex: 0 0 55%;
+    scroll-snap-align: center;
   }
 
   .player-item:hover img {
-    transform: scale(1); /* 取消手機版的 hover 放大 */
+    transform: scale(1);
   }
   .player-item:active img {
-    transform: scale(1.05); /* 點擊時微放大作為回饋 */
+    transform: scale(1.05);
   }
 
-  /* [順序 4] 底部文字與標籤 (nav-left & nav-right) */
+  /* [順序 4] 底部文字與標籤 */
   .nav-left {
     order: 4;
     position: relative;
-    margin: 6vh auto 1vh auto;
+    margin: 2vh auto 1vh auto;
     top: auto;
     left: auto;
     text-align: center;
@@ -431,8 +419,8 @@ span.tc_space {
     color: #666;
   }
 
-  /* 在手機版隱藏電腦專用的換行標籤 */
-  .pc-br {
+  /* 【修正重點 2】：在手機版一律隱藏這段文字內的所有 <br>，讓螢幕寬度接管排版 */
+  .nav-left p br {
     display: none;
   }
 
@@ -445,7 +433,7 @@ span.tc_space {
     text-align: center;
   }
   .nav-right .nav-image {
-    width: 25vw; /* 縮小底部的裝飾圓標 */
+    width: 25vw;
     margin-top: 10px;
   }
 }
