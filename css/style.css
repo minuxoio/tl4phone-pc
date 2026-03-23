@@ -260,228 +260,162 @@ span.tc_space {
    手機版 (Mobile) 專屬樣式設定 (< 768px)
 ========================================= */
 @media screen and (max-width: 768px) {
+  /* 🌟 基礎設定：重置頁面流暢度，強制關閉舊版的 flex 排版 */
   html,
   body {
-    overflow: hidden;
-    height: 100dvh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100dvh;
     width: 100vw;
-    box-sizing: border-box;
-  }
-
-  body {
+    margin: 0;
+    padding: 0;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-bottom: 15vh;
+    display: block; /* 🔥 關鍵修復：解除舊版 body 的 flex，讓順序恢復正常 */
   }
 
+  /* 隱藏沒用到的 PC 導覽列 */
   header.navigation {
-    display: contents;
-  }
-
-  .right-vol {
     display: none;
   }
 
-  /* 上方固定區塊跑馬燈與 Logo */
-
-  /* [順序 1] 跑馬燈：貼緊螢幕上緣 */
+  /* ==========================================
+     第 1 層：頂部左右兩側 (使用絕對定位)
+  ========================================== */
+  /* --- 左邊：跑馬燈 (上) + 版權文字 (下) --- */
   .runborder {
-    order: 1;
-    position: relative;
-    margin: 2vh auto 0 auto;
-    width: 90vw;
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    top: 3vh;
+    left: 5vw;
+    width: 25vw;
+    margin: 0;
+    display: block; /* 覆蓋舊版設定 */
   }
   .runborder .marquee-container {
     width: 100%;
   }
 
+  .nav-left {
+    position: absolute;
+    top: 9vh; /* 🔥 稍微調高一點，避免跟上方跑馬燈重疊 */
+    left: 5vw;
+    margin: 0;
+    width: 30vw;
+    font-size: 7px;
+    line-height: 1.4;
+    color: #000000;
+    text-align: left;
+    white-space: normal;
+  }
+  .nav-left p {
+    margin: 0;
+  }
+  .nav-left p br {
+    display: inline !important;
+  }
+
+  /* --- 右邊：標籤圖片 (上) + 音量鍵 (下) --- */
+  .nav-right {
+    position: absolute;
+    top: 3vh;
+    right: 5vw;
+    margin: 0;
+  }
+  .nav-right .nav-image {
+    width: 40vw; /* 保留你的微調設定 */
+    margin: 0;
+  }
+
+  .right-vol {
+    position: absolute;
+    top: 20vh; /* 🔥 因為你的圖片設了 40vw 比較大，音量鍵要往下推才不會疊在一起 */
+    right: 5vw;
+    margin: 0;
+    display: block;
+  }
+
+  /* ==========================================
+     第 2 層：Logo + 呼吸文字
+  ========================================== */
   .nav-center {
-    order: 2;
     position: relative;
-    margin-top: 2vh;
-    width: 100%;
+    margin-top: 25vh; /* 🔥 往下推 25vh，完美避開第 1 層的東西 */
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .nav-center .logo img {
-    width: 55vw;
+    width: 60vw;
     min-width: unset;
+    margin: 0;
   }
   .nav-center .title {
-    margin-top: 10px;
+    margin-top: 15px;
     font-size: 11px;
-    line-height: 20px;
+    line-height: 1.8;
   }
   span.tc_space {
     letter-spacing: 2px;
   }
-  /* =========================================
-   手機版 (Mobile) 全新重構：由上到下 3 層佈局
-========================================= */
-  @media screen and (max-width: 768px) {
-    /* 🌟 基礎設定：重置頁面流暢度 */
-    html,
-    body {
-      overflow-x: hidden;
-      overflow-y: auto; /* 允許自然上下滑動 */
-      height: auto;
-      min-height: 100dvh;
-      width: 100vw;
-      margin: 0;
-      padding: 0;
-      position: relative;
-    }
 
-    /* 隱藏沒用到的 PC 導覽列 */
-    header.navigation {
-      display: none;
-    }
-
-    /* ==========================================
-     第 1 層：頂部左右兩側 (使用絕對定位，各就各位)
+  /* ==========================================
+     第 3 層：滾動選單 (機器列表)
   ========================================== */
+  .player-menu {
+    position: relative;
+    width: 100vw;
+    height: auto;
+    margin-top: 10vh; /* 距離上方呼吸字體的距離 */
+    margin-bottom: 10vh; /* 底部留一點白 */
+    bottom: auto;
+    left: auto;
 
-    /* --- 左邊：跑馬燈 (上) + 版權文字 (下) --- */
-    .runborder {
-      position: absolute;
-      top: 3vh;
-      left: 5vw;
-      width: 25vw; /* 限制寬度，留空間給右邊 */
-      margin: 0;
-    }
-    .runborder .marquee-container {
-      width: 100%;
-    }
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0; /* 絕對不加 padding */
 
-    .nav-left {
-      position: absolute;
-      top: 4vh; /* 放在跑馬燈正下方 */
-      left: 5vw;
-      margin: 0;
-      width: 30vw; /* 限制寬度，不干擾右邊 */
-      font-size: 7px; /* 縮小字體以適應頂部空間 */
-      line-height: 1.4;
-      color: #000000;
-      text-align: left;
-      white-space: normal;
-    }
-    .nav-left p {
-      margin: 0;
-    }
-    .nav-left p br {
-      display: inline !important;
-    }
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    -webkit-overflow-scrolling: touch;
+    scale: 1; /* 覆蓋舊版設定 */
+  }
 
-    /* --- 右邊：標籤圖片 (上) + 音量鍵 (下) --- */
-    .nav-right {
-      position: absolute;
-      top: 3vh;
-      right: 5vw;
-      margin: 0;
-    }
-    .nav-right .nav-image {
-      width: 40vw;
-      margin: 0;
-    }
+  .player-menu::-webkit-scrollbar {
+    display: none;
+  }
+  .player-menu {
+    scrollbar-width: none;
+  }
 
-    .right-vol {
-      position: absolute;
-      top: 4vh; /* 放在圖片正下方 */
-      right: 5vw;
-      margin: 0;
-      display: block; /* 確保顯示 */
-    }
+  .player-item {
+    flex: 0 0 60vw; /* 機器寬度佔螢幕 60% */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: center;
+  }
 
-    /* ==========================================
-     第二層：Logo + 呼吸文字 (保留你的微調數值)
-  ========================================== */
-    .nav-center {
-      position: relative;
-      /* 往下推 25vh，完美避開上方第一層的所有東西，絕不重疊！ */
-      margin-top: 25vh;
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .nav-center .logo img {
-      width: 55vw; /* 你的微調數值 */
-      min-width: unset;
-      margin: 0;
-    }
-    .nav-center .title {
-      margin-top: 10px; /* 你的微調數值 */
-      font-size: 11px; /* 你的微調數值 */
-      line-height: 20px; /* 你的微調數值 */
-    }
-    span.tc_space {
-      letter-spacing: 2px; /* 你的微調數值 */
-    }
+  .player-item img {
+    width: 100%; /* 🔥 關鍵修復：把 800% 改回 100% 正常大小 */
+    height: auto;
+    object-fit: contain;
+  }
 
-    /* ==========================================
-     第三層：滾動選單 (接在第二層下方)
-  ========================================== */
-    .player-menu {
-      position: relative;
-      width: 100vw;
-      height: auto;
+  /* 🔥 讓第一台與最後一台完美置中的墊片魔法 
+     (100vw 螢幕 - 60vw 機器) / 2 = 20vw */
+  .player-item:first-child {
+    margin-left: 20vw;
+  }
+  .player-item:last-child {
+    margin-right: 20vw;
+  }
 
-      margin-top: 4vh; /* 距離上方呼吸字的距離 */
-
-      /* 清除 PC 版的干擾設定 */
-      bottom: auto;
-      left: 0;
-      scale: 1;
-
-      display: flex;
-      align-items: center;
-      flex-wrap: nowrap;
-
-      padding: 0; /* 堅決不加 padding 撐破畫面 */
-
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 15px;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .player-menu::-webkit-scrollbar {
-      display: none;
-    }
-    .player-menu {
-      scrollbar-width: none;
-    }
-
-    .player-item {
-      flex: 0 0 65vw; /* 機器佔螢幕寬度 65% */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      scroll-snap-align: center;
-    }
-
-    .player-item img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-    /* 🔥 讓第一台與最後一台完美置中的墊片魔法 
-     (100vw 螢幕 - 65vw 機器) / 2 = 17.5vw */
-    .player-item:first-child {
-      margin-left: 17.5vw;
-    }
-    .player-item:last-child {
-      margin-right: 17.5vw;
-    }
-
-    /* 取消 PC 的 hover 效果，避免手機點擊閃爍 (JS 已處理放大縮小) */
-    .player-item:hover img,
-    .player-item:active img {
-      transform: none;
-    }
+  /* 避免手機點擊閃爍 */
+  .player-item:hover img,
+  .player-item:active img {
+    transform: none;
   }
 }
