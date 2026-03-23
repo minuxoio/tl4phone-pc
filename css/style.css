@@ -348,20 +348,20 @@ span.tc_space {
   .nav-center {
     order: 2;
     position: relative;
-    margin-top: 5vh;
+    margin-top: 2vh; /* 縮小與跑馬燈的距離，原本是 5vh */
     width: 100%;
   }
   .nav-center .logo img {
-    width: 75vw;
+    width: 55vw; /* 縮小 Logo，原本是 75vw */
     min-width: unset;
   }
   .nav-center .title {
-    margin-top: 30px;
-    font-size: 14px;
-    line-height: 28px;
+    margin-top: 15px; /* 縮小與 Logo 的距離，原本是 30px */
+    font-size: 11px; /* 縮小字體 */
+    line-height: 20px; /* 縮小行高 */
   }
   span.tc_space {
-    letter-spacing: 4px;
+    letter-spacing: 2px; /* 縮小字距，避免斷行 */
   }
 
   /* [順序 3] 滾動選單 */
@@ -380,9 +380,9 @@ span.tc_space {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
 
-    /* 🔥 關鍵修正：增加極大的上下 Padding (上下各給 80px 的安全空間) */
-    padding: 80px 10vw;
-    margin-top: 0;
+    /* 大幅縮減上下空間：從 80px 降到 40px，釋放畫面高度 */
+    padding: 40px 10vw;
+    margin-top: 1vh; /* 縮小與上方標題的距離 */
 
     gap: 20px;
     -webkit-overflow-scrolling: touch;
@@ -396,7 +396,7 @@ span.tc_space {
   }
 
   .player-item {
-    flex: 0 0 55%;
+    flex: 0 0 42%; /* 機器本體稍微縮小（從 55% 降到 42%），讓畫面更不擁擠 */
     scroll-snap-align: center;
   }
 
@@ -411,7 +411,7 @@ span.tc_space {
   .nav-left {
     order: 4;
     position: relative;
-    margin: 2vh auto 1vh auto;
+    margin: 0 auto 1vh auto; /* 移除上方距離，讓文字貼近播放器 */
     top: auto;
     left: auto;
     text-align: center;
