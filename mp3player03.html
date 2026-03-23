@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TuneLab - MP3 player</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link href="css/songs.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- 右側信息 -->
+    <div class="nav-right">
+      <img src="images/cornerLabel.svg" class="nav-image" />
+    </div>
+    <!-- 音量控制按鈕 -->
+    <div class="right-vol">
+      <img
+        id="volume-icon"
+        src="images/icon_volume.svg"
+        class="volume_icon"
+        alt="Volume Icon"
+        onclick="
+          var audio = document.getElementById('bgm');
+          audio.muted = !audio.muted;
+          this.src = audio.muted
+            ? 'images/icon_mute.svg'
+            : 'images/icon_volume.svg';
+        "
+      />
+    </div>
+    <!-- 返回按鈕 -->
+    <div class="back-button" style="z-index: 999999 !important">
+      <a href="mp3player.html" style="display: block">
+        <img
+          id="back-icon"
+          src="images/icon_back.png"
+          alt="Back Button"
+          style="width: 22px; height: 22px"
+        />
+      </a>
+    </div>
+    <div id="typewriter" class="typewriter-text">
+      <div class="deco-text">
+        <h4>
+          Drag to Rotate<br />
+          點選紅色按鈕播放歌曲
+        </h4>
+        <p>
+          mp3player-385016<br />
+          MFG.D 2024'12<br /><br />
+          [Generation]:2000s-<br /><br /><br /><br />
+          ⬊⬊⬊⬊
+        </p>
+      </div>
+    </div>
+
+    <div class="logo" alt="Logo Placeholder">
+      <a href="index.html"><img src="images/title.webp" /></a>
+    </div>
+
+    <!-- 中間模型 -->
+    <div class="model-container">
+      <div class="radio-model">
+        <spline-viewer
+          url="https://prod.spline.design/dF4a6AnswInJWRwo/scene.splinecode"
+        ></spline-viewer>
+      </div>
+    </div>
+
+    <!-- 左側專輯+資訊 -->
+    <div class="album-container">
+      <!-- 專輯 -->
+      <div class="album">
+        <img
+          src="./images/blackclassicalmusic_cover.jpg"
+          alt="Black Classical Music"
+          class="album-cover"
+        />
+
+        <div class="album-info">
+          <p class="info">info</p>
+          <h2 class="album-title">BLACK CLASSICAL MUSIC</h2>
+          <p class="album-artist">Yussef Dayes</p>
+          <p class="album-year">2023</p>
+          <a href="floopy disk.html?disk=15" target="_self" class="receive-disk"
+            ><img src="./images/play_button.png" /> 領取你的專屬磁片</a
+          >
+          <p class="info-text">
+            Yussef
+            Dayes是英國爵士鼓手、作曲家和唱片製作人。結合一系列來自南半球、西非，甚至到加勒比海和南美洲等令人「耳」花撩亂的聲音和節奏，從他的表演中，可以看見精湛的技術，也能感受到強烈的激情，更以突破界限的音樂風景，吸引全世界的樂迷觀眾，在倫敦當代爵士樂壇中占有重要地位。<br />
+            後來以 Kamaal Williams 組成的 Yussef Kamal、以及和 Tom Misch
+            合作專輯《What Kinda Music》聲名大噪，Yussef Dayes 在 2023
+            年發行個人首張專輯《Black Classical
+            Music》，融合爵士樂、雷鬼與嘻哈。
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

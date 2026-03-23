@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TuneLab - MP3 player</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link href="css/songs.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- 右側信息 -->
+    <div class="nav-right">
+      <img src="images/cornerLabel.svg" class="nav-image" />
+    </div>
+    <!-- 音量控制按鈕 -->
+    <div class="right-vol">
+      <img
+        id="volume-icon"
+        src="images/icon_volume.svg"
+        class="volume_icon"
+        alt="Volume Icon"
+        onclick="
+          var audio = document.getElementById('bgm');
+          audio.muted = !audio.muted;
+          this.src = audio.muted
+            ? 'images/icon_mute.svg'
+            : 'images/icon_volume.svg';
+        "
+      />
+    </div>
+    <!-- 返回按鈕 -->
+    <div class="back-button" style="z-index: 999999 !important">
+      <a href="mp3player.html" style="display: block">
+        <img
+          id="back-icon"
+          src="images/icon_back.png"
+          alt="Back Button"
+          style="width: 22px; height: 22px"
+        />
+      </a>
+    </div>
+    <div id="typewriter" class="typewriter-text">
+      <div class="deco-text">
+        <h4>
+          Drag to Rotate<br />
+          點選紅色按鈕播放歌曲
+        </h4>
+        <p>
+          mp3player-385016<br />
+          MFG.D 2024'12<br /><br />
+          [Generation]:2000s-<br /><br /><br /><br />
+          ⬊⬊⬊⬊
+        </p>
+      </div>
+    </div>
+
+    <div class="logo" alt="Logo Placeholder">
+      <a href="index.html"><img src="images/title.webp" /></a>
+    </div>
+
+    <!-- 中間模型 -->
+    <div class="model-container">
+      <div class="radio-model">
+        <spline-viewer
+          url="https://prod.spline.design/VEEshtxndcae7kGb/scene.splinecode"
+        ></spline-viewer>
+      </div>
+    </div>
+
+    <!-- 左側專輯+資訊 -->
+    <div class="album-container">
+      <!-- 專輯 -->
+      <div class="album">
+        <img
+          src="./images/afroblue_cover.jpg"
+          alt="Afro Blue"
+          class="album-cover"
+        />
+
+        <div class="album-info">
+          <p class="info">info</p>
+          <h2 class="album-title">AFRO BLUE</h2>
+          <p class="album-artist">Robert Glasper</p>
+          <p class="album-year">2012</p>
+          <a href="floopy disk.html?disk=14" target="_self" class="receive-disk"
+            ><img src="./images/play_button.png" /> 領取你的專屬磁片</a
+          >
+          <p class="info-text">
+            Robert Glasper（電子樂團Robert Glasper
+            Experiment成員之一），是美國鋼琴家、唱片製作人、詞曲作者和音樂編曲家，以對爵士和嘻哈領域之間的重要貢獻而聞名。<br />
+            在專輯《Black
+            Radio》中，跨界爵士與嘻哈空間顯得更加明確。專輯收錄了與Erykah
+            Badu合作，現在已成經典的〈Afro Blue〉，以及與Lalah
+            Hathaway、Bilal和Yasiin Bey（原名Mos
+            Def）等人合作的作品。你還會聽到他重新詮釋超脫樂團（Nirvana）的〈Smells
+            Like Teen Spirit〉。在深夜聆聽這首歌時，感覺特別放鬆。
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

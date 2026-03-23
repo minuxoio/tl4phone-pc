@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TuneLab - MP3 player</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link href="css/songs.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- 右側信息 -->
+    <div class="nav-right">
+      <img src="images/cornerLabel.svg" class="nav-image" />
+    </div>
+    <!-- 音量控制按鈕 -->
+    <div class="right-vol">
+      <img
+        id="volume-icon"
+        src="images/icon_volume.svg"
+        class="volume_icon"
+        alt="Volume Icon"
+        onclick="
+          var audio = document.getElementById('bgm');
+          audio.muted = !audio.muted;
+          this.src = audio.muted
+            ? 'images/icon_mute.svg'
+            : 'images/icon_volume.svg';
+        "
+      />
+    </div>
+    <!-- 返回按鈕 -->
+    <div class="back-button" style="z-index: 999999 !important">
+      <a href="mp3player.html" style="display: block">
+        <img
+          id="back-icon"
+          src="images/icon_back.png"
+          alt="Back Button"
+          style="width: 22px; height: 22px"
+        />
+      </a>
+    </div>
+    <div id="typewriter" class="typewriter-text">
+      <div class="deco-text">
+        <h4>
+          Drag to Rotate<br />
+          點選紅色按鈕播放歌曲
+        </h4>
+        <p>
+          mp3player-385016<br />
+          MFG.D 2024'12<br /><br />
+          [Generation]:2000s-<br /><br /><br /><br />
+          ⬊⬊⬊⬊
+        </p>
+      </div>
+    </div>
+
+    <div class="logo" alt="Logo Placeholder">
+      <a href="index.html"><img src="images/title.webp" /></a>
+    </div>
+
+    <!-- 中間模型 -->
+    <div class="model-container">
+      <div class="radio-model">
+        <spline-viewer
+          url="https://prod.spline.design/3nJ2oXunoj3MTp3L/scene.splinecode"
+        ></spline-viewer>
+      </div>
+    </div>
+
+    <!-- 左側專輯+資訊 -->
+    <div class="album-container">
+      <!-- 專輯 -->
+      <div class="album">
+        <img
+          src="./images/kuchibashinicherry_cover.jpg"
+          alt="Kuchibashi Ni Cherry"
+          class="album-cover"
+        />
+
+        <div class="album-info">
+          <p class="info">info</p>
+          <h2 class="album-title">くちばしにチェリー</h2>
+          <p class="album-artist">Ego-Wrappin’</p>
+          <p class="album-year">2002</p>
+          <a href="floopy disk.html?disk=13" target="_self" class="receive-disk"
+            ><img src="./images/play_button.png" /> 領取你的專屬磁片</a
+          >
+          <p class="info-text">
+            EGO-WRAPPIN'是日本爵士樂和搖滾音樂二人組，由主唱Yoshie
+            Nakano和吉他手Masaki Mori組成。<br />
+            1996年自關西大阪發跡，2000年以單曲〈色彩のブルース〉形成
+            EGO-WRAPPIN’ 獨一無二的音樂樣貌。
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

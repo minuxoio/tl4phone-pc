@@ -1,0 +1,354 @@
+html,
+body {
+  margin: 0; /* 移除邊距 */
+  padding: 0; /* 移除內邊距 */
+  overflow: hidden; /* 禁止滾動條出現 */
+  height: 100%; /* 覆蓋整個視窗 */
+  width: 100%;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto Mono", "Noto Sans CJK TC";
+
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* 禁止滾動條 */
+}
+
+.barcode-container {
+  position: absolute; /* 使用絕對定位，控制在特定位置 */
+  left: -6.5vh; /* 與視窗頂部的間距 */
+  margin-top: 5.7vw; /* 與視窗右側的間距 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(-90deg); /* 整個條碼區域旋轉 */
+}
+
+.barcode {
+  display: flex;
+  height: 140px;
+  scale: 80%;
+  align-items: flex-end;
+}
+
+.barcode div {
+  background-color: black;
+  margin: 0 1px;
+}
+
+.barcode-text {
+  font-size: 18px;
+  margin-top: 10px;
+
+  text-align: center;
+}
+
+#time-display {
+  position: absolute;
+  bottom: 3.5vh; /* 與視窗頂部的間距 */
+  left: 2.5vw; /* 與視窗右側的間距 */
+  font-size: 30px;
+}
+
+.nav-left {
+  position: absolute; /* 使用絕對定位，控制在特定位置 */
+  top: 5vh; /* 與視窗頂部的間距 */
+  margin-left: 2vw; /* 與視窗右側的間距 */
+  font-size: 11px;
+  margin-top: 2.5vh; /* 與視窗頂部的間距 */
+  margin-left: 2.5vw; /* 與視窗右側的間距 */
+  font-weight: 500;
+}
+
+.deco-text h4 {
+  display: inline-block;
+  text-align: right; /* 文字置右 */
+  font-size: 14px; /* 文字大小 */
+  line-height: 20px;
+  position: absolute; /* 使用絕對定位，控制在特定位置 */
+  top: 30vh; /* 與視窗頂部的間距 */
+  right: 2vw; /* 與視窗右側的間距 */
+  animation: breathing 5s infinite;
+  color: #b4422b;
+}
+
+.deco-text p {
+  display: inline-block;
+  text-align: right; /* 文字置右 */
+  font-size: 11px; /* 文字大小 */
+  position: absolute; /* 使用絕對定位，控制在特定位置 */
+  top: 38vh; /* 與視窗頂部的間距 */
+  right: 2vw; /* 與視窗右側的間距 */
+  margin-inline: auto;
+  overflow: hidden;
+  /* Keeps on a single line */
+  white-space: nowrap;
+  /* The cursor */
+  /*border-right: 1px solid;
+    /* steps = number of characters */
+  animation: typing 2s steps(22) backwards;
+}
+
+.logo {
+  position: absolute; /* 使用絕對定位，控制在特定位置 */
+  bottom: 3.5vh; /* 與視窗底部的間距 */
+  right: 2vw; /* 與視窗右側的間距 */
+}
+
+.logo img {
+  width: 260px; /* 讓圖片填滿容器的寬度 */
+  max-width: none; /* 防止圖片過度縮放 */
+  height: auto; /* 保持圖片的比例 */
+}
+/* 左側導航樣式 */
+.runborder {
+  margin-top: 4vh; /* 與視窗頂部的間距 */
+  margin-left: 2.5vw; /* 與視窗右側的間距 */
+}
+
+.runborder .marquee-container {
+  width: 10vw;
+  overflow: hidden;
+  display: flex;
+  border-radius: 25px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1.5px;
+  font-size: 12px;
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 10s linear infinite;
+  padding-left: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.marquee-content2 {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee2 10s linear infinite;
+  padding-left: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.marquee-content3 {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee2 10s linear infinite;
+  padding-left: 8px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes marquee3 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+/* 右側導航樣式 */
+.nav-right {
+  position: absolute; /* 使用絕對定位，控制在特定位置 */
+  top: 4vh; /* 與視窗頂部的間距 */
+  right: 2vw; /* 與視窗右側的間距 */
+}
+
+.nav-right .nav-image {
+  width: 20vw; /* 圖片寬度設為視窗寬度的 x% */
+  height: auto; /* 自動調整高度比例 */
+  max-width: 250px; /* 設定最大寬度，避免圖片過大 */
+  max-height: 250px; /* 設定最大高度，保持比例 */
+  object-fit: contain; /* 確保圖片完整顯示 */
+}
+.right-vol {
+  position: absolute;
+  top: 11.5vh; /* 根據需要調整位置 */
+  right: 4.7vw;
+  cursor: pointer; /* 鼠標變成指針 */
+}
+
+.volume_icon {
+  width: 22px;
+  height: 22px;
+}
+.back-button {
+  position: absolute;
+  top: 11.5vh;
+  right: 2.4vw; /* 左側位置 */
+  cursor: pointer;
+}
+
+.back-button img {
+  width: 22px;
+  height: 22px;
+}
+
+.title {
+  position: absolute;
+  top: 55%; /* 往下移動，原本是 50%，現在調整為 55% */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  animation: breathing 5s infinite; /* 保留動畫 */
+}
+
+/* 下載50按鈕樣式 */
+.download-button {
+  display: none;
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: rgb(39, 39, 39);
+  cursor: pointer;
+
+  opacity: 0;
+  transition: opacity 1s ease;
+  animation: breathing 5s infinite;
+}
+
+.download-button.show {
+  display: block;
+  opacity: 1;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+/* 呼吸效果動畫 */
+@keyframes breathing {
+  0% {
+    opacity: 1; /* 實色 */
+  }
+  25% {
+    opacity: 0; /* 實色 */
+  }
+  50% {
+    opacity: 1; /* 半透明 */
+  }
+  75% {
+    opacity: 0; /* 回到實色 */
+  }
+  100% {
+    opacity: 1; /* 回到實色 */
+  }
+}
+
+.download-button.show {
+  display: block;
+  opacity: 1;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* 浮動文字樣式 */
+
+.floating-text {
+  line-height: 35px;
+  position: absolute;
+  display: inline-block;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  font-size: 18px;
+  animation: breathing 5s infinite;
+  opacity: 1; /* 初始顯示 */
+  transition: opacity 0.5s ease; /* 平滑過渡效果 */
+}
+
+/* 停止動畫並隱藏元素 */
+.floating-text.hidden {
+  animation: none; /* 停止動畫 */
+  opacity: 0; /* 淡出 */
+  display: none; /* 完全隱藏 */
+}
+
+span.tc_space {
+  letter-spacing: 10px; /* 字距調整 */
+}
+
+/* 磁片機圖片 */
+.disk-drive {
+  width: 20vw;
+  max-width: 400px; /* 限制最大寬度 */
+  height: auto;
+}
+
+/* 磁片樣式 */
+.disk {
+  position: absolute;
+  top: 48.9%;
+  left: 50%;
+
+  width: 200px;
+  height: 200px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.00015s ease;
+}
+
+.disk.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(2);
+}
+.spline-wrapper {
+  position: absolute; /* 絕對定位 */
+  top: 74.1vh;
+  left: 41.7vw;
+  scale: 0.85;
+  width: 924.8px; /* 固定寬度 */
+  height: 2000px; /* 固定高度 */
+  transform: translate(-50%, -50%); /* 水平垂直居中 */
+  overflow: hidden; /* 防止內容超出 */
+}

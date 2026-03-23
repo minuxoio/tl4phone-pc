@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TuneLab - Radio</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link href="css/songs.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- 右側信息 -->
+    <div class="nav-right">
+      <img src="images/cornerLabel.svg" class="nav-image" />
+    </div>
+    <!-- 音量控制按鈕 -->
+    <div class="right-vol">
+      <img
+        id="volume-icon"
+        src="images/icon_volume.svg"
+        class="volume_icon"
+        alt="Volume Icon"
+        onclick="
+          var audio = document.getElementById('bgm');
+          audio.muted = !audio.muted;
+          this.src = audio.muted
+            ? 'images/icon_mute.svg'
+            : 'images/icon_volume.svg';
+        "
+      />
+    </div>
+    <!-- 返回按鈕 -->
+    <div class="back-button" style="z-index: 999999 !important">
+      <a href="radio.html" style="display: block">
+        <img
+          id="back-icon"
+          src="images/icon_back.png"
+          alt="Back Button"
+          style="width: 22px; height: 22px"
+        />
+      </a>
+    </div>
+    <div id="typewriter" class="typewriter-text">
+      <div class="deco-text">
+        <h4>
+          Drag to Rotate<br />
+          點選紅色按鈕播放歌曲
+        </h4>
+        <p>
+          radio-765379<br />
+          MFG.D 2024'12<br /><br />
+          [Generation]:1940s-50s<br /><br /><br /><br />
+          ⬊⬊⬊⬊
+        </p>
+      </div>
+    </div>
+
+    <div class="logo" alt="Logo Placeholder">
+      <a href="index.html"><img src="images/title.webp" /></a>
+    </div>
+
+    <!-- 中間模型 -->
+    <div class="model-container">
+      <div class="radio-model">
+        <spline-viewer
+          url="https://prod.spline.design/YczAW0Sgvt4FAH58/scene.splinecode"
+        ></spline-viewer>
+      </div>
+    </div>
+
+    <!-- 左側專輯+資訊 -->
+    <div class="album-container">
+      <!-- 專輯 -->
+      <div class="album">
+        <img
+          src="./images/moanin_cover.webp"
+          alt="Moanin'"
+          class="album-cover"
+        />
+
+        <div class="album-info">
+          <p class="info">info</p>
+          <h2 class="album-title">MOANIN’</h2>
+          <p class="album-artist">Art Blakey & The Jazz Messengers</p>
+          <p class="album-year">1959</p>
+          <a href="floopy disk.html?disk=5" target="_self" class="receive-disk"
+            ><img src="./images/play_button.png" /> 領取你的專屬磁片</a
+          >
+          <p class="info-text">
+            Art Blakey & The Jazz Messengers是爵士樂史上最具代表性的硬波普（Hard
+            Bop）樂團之一， 由鼓手Art Blakey
+            在1950年代成立。這支樂團在1950年代到1980年代期間，不僅創作了無數經典作品，還成為無數爵士樂大師的搖籃。<br />
+            Art
+            Blakey帶領樂團活躍了超過三十年，即使在樂隊成員不斷更迭的情況下，仍保持高水準的創作與演出，The
+            Jazz Messengers還被稱為「音樂家訓練學校」。<br />
+            Art Blakey
+            的一句名言總結了他的音樂使命：「讓年輕人參與進來、讓這種音樂保持生命力。」這也正是
+            Art Blakey & The Jazz Messengers 的音樂精神所在。
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Barcode & Time</title>
+    <link rel="stylesheet" href="css/floopy.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"
+    ></script>
+  
+  </head>
+  
+  <body>
+
+    <!-- 包裹內容的固定大小容器 -->
+    <div class="container">
+      <!-- 3D Viewer 的容器 -->
+      <div class="spline-wrapper">
+        <spline-viewer
+          url="https://prod.spline.design/f2S0T7pxGcONM9fT/scene.splinecode"
+        ></spline-viewer>
+      </div>
+      <!-- 條碼與文字 -->
+       <!--
+      <div class="barcode-container">
+        <div class="barcode"></div>
+        <div class="barcode-text">Vis. 000000</div>
+      </div>-->
+
+      <!-- 動態時間顯示 -->
+      <div id="time-display">00:00:00</div>
+
+      <!-- 磁片與下載按鈕 -->
+     <div class="disk-drive">
+       
+     </div>
+     <div class="disk" id="disk-image"></div>
+     <div class="download-button" id="download-button" onclick="downloadDiskImage()">
+        &lt;&lt; 即刻下載你的專屬磁片 &gt;&gt;
+    </div>
+      <!-- 左側資訊 -->
+      <div class="nav-left">
+        <!-- <img src="./images/X (1).png" alt="Cross Placeholder" /> -->
+        <p>
+          (P)&(C)2024 TL Entertainment 2024.12.<br />
+          Distributed by NTUA VCD,<br />
+          INC. TAIWAN Warning: All rights<br />
+          reserved. Unauthorized<br />
+          duplication & rent is<br />
+          prohibited.<br />
+          Printed in Taiwan, Tune Lab
+        </p>
+      </div>
+      <!-- 右部版權資訊 -->
+          <div id="typewriter" class="typewriter-text">
+      <div class="deco-text">
+        <!--<h4>
+          Click on to print<br />
+          點擊磁碟機
+        </h4>
+        <p>
+          floppydisk-286471<br />
+          MFG.D 2024'12<br /><br />
+          [Generation]:new era<br /><br /><br /><br />
+          ⬊⬊⬊⬊
+        </p>-->
+      </div>
+    </div>
+
+     
+      </div>
+
+      <!-- 右下角標誌 -->
+      <div class="logo">
+        <a href="index.html"><img
+          src="./images/title.webp"
+          alt="Logo Placeholder"
+          width="260"
+          height="auto"
+        /></a>
+      </div>
+    </div>
+    <!-- 左側導航 -->
+
+    <div class="runborder">
+      <div class="marquee-container">
+        <div class="marquee-content">tunelab.com - find your own TUNE</div>
+        <div class="marquee-content2">tunelab.com - find your own TUNE</div>
+        <div class="marquee-content3">tunelab.com - find your own TUNE</div>
+      </div>
+    </div>
+    <!-- 右側信息 -->
+    <div class="nav-right">
+      <img src="images/cornerLabel.svg" class="nav-image" />
+    </div>
+ <!-- 音量控制按鈕 -->
+<div class="right-vol">
+    <img id="volume-icon" src="images/icon_volume.svg" class="volume_icon" alt="Volume Icon" />
+  </div>
+  <!-- 返回按鈕 -->
+<div class="back-button">
+    <img id="back-icon" src="images/icon_back.png" alt="Back Button" />
+  </div>
+  
+
+    <!-- 浮動提示文字 -->
+<div id="floating-text" class="floating-text">
+    << Click The Disc Drive >>
+    <br />
+    <<<span class="tc_space"> 點擊此磁碟機 </span>>>
+  </div>
+  
+  
+  <!-- 新增磁片容器 -->
+ 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const floatingText = document.getElementById("floating-text");
+
+      document.addEventListener("click", function () {
+        if (floatingText) {
+          floatingText.classList.add("hidden");
+          console.log("點擊成功，浮動文字已隱藏");
+        }
+      });
+    });
+  </script>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
