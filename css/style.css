@@ -261,57 +261,55 @@ span.tc_space {
    手機版 (Mobile) 專屬樣式設定 (< 768px)
 ========================================= */
 @media screen and (max-width: 768px) {
+  /* 🌟 1. 鎖死螢幕：禁止上下滑動，高度完美貼合 1 個手機螢幕 */
   html,
   body {
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: auto;
-    min-height: 100vh;
+    overflow: hidden;
+    height: 100dvh; /* 使用 dvh 精準貼合手機動態視窗，不會被網址列吃掉 */
+    width: 100vw;
+    box-sizing: border-box;
   }
 
-  /* 🌟 核心修改：改用 Grid (網格) 佈局，完美解決間距與並排問題 */
   body {
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 把畫面直向切成左右兩半 */
-    grid-template-rows: auto auto auto auto; /* 總共 4 個橫排 */
-    align-content: center; /* 讓所有內容在螢幕上垂直置中，畫面更平衡 */
-    padding-bottom: 20px;
-    row-gap: 3vh; /* 統一設定每個區塊之間的上下間距 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* 🌟 2. 在底部預留 15% 的安全空間，專門留給版權文字與圖標 */
+    padding-bottom: 15vh;
   }
 
   .right-vol {
     display: none;
   }
 
-  /* [第 1 排] 跑馬燈：橫跨左右兩格 */
+  /* [順序 1] 跑馬燈 */
   .runborder {
-    grid-column: 1 / -1;
-    grid-row: 1;
+    order: 1;
     position: relative;
+    margin: 4vh auto 0 auto; /* 距離頂部 4vh */
     width: 90vw;
-    justify-self: center; /* 水平置中 */
-    margin: 0;
+    display: flex;
+    justify-content: center;
   }
   .runborder .marquee-container {
     width: 100%;
   }
 
-  /* [第 2 排] 中間標題：橫跨左右兩格 */
+  /* [順序 2] 中間標題 */
   .nav-center {
-    grid-column: 1 / -1;
-    grid-row: 2;
+    order: 2;
     position: relative;
+    margin-top: 3vh; /* 與上方跑馬燈的距離 */
     width: 100%;
-    margin-top: 0;
   }
   .nav-center .logo img {
     width: 55vw;
     min-width: unset;
-    margin: 0 auto;
   }
   .nav-center .title {
-    margin-top: 15px;
+    margin-top: 10px;
     font-size: 11px;
     line-height: 20px;
   }
@@ -319,26 +317,24 @@ span.tc_space {
     letter-spacing: 2px;
   }
 
-  /* [第 3 排] 滾動選單：橫跨左右兩格 */
+  /* [順序 3] 滾動選單 */
   .player-menu {
-    grid-column: 1 / -1;
-    grid-row: 3;
+    order: 3;
     position: relative;
     width: 100vw;
-    height: auto;
-    scale: 1;
-    bottom: auto;
-    left: auto;
 
+    /* 🌟 3. 核心魔法：讓選單自動「吸收」中間所有剩下的高度，並在裡面垂直置中 */
+    flex-grow: 1;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    align-items: center; /* 確保播放器圖片乖乖待在中間，不會亂跑 */
+
     overflow-x: auto;
     scroll-snap-type: x mandatory;
 
-    /* 縮小這裡的 padding，因為 Grid 已經處理了大部分間距 */
-    padding: 10px 10vw;
-    margin-top: 0;
+    /* 因為已經用 flex-grow 撐開高度，這裡只要管左右留白就好 */
+    padding: 0 10vw;
+    margin-top: 2vh;
     gap: 20px;
     -webkit-overflow-scrolling: touch;
   }
@@ -362,19 +358,19 @@ span.tc_space {
     transform: scale(1.05);
   }
 
-  /* [第 4 排，左側] 左下文字：只佔左半邊的網格 */
+  /* ==========================================
+     🌟 4. 底部元素：絕對定位，死死卡在畫面底部
+  ========================================== */
+
+  /* 底部文字 (左下角) */
   .nav-left {
-    grid-column: 1 / 2;
-    grid-row: 4;
-    position: relative;
-    bottom: auto;
-    left: auto; /* 解除絕對定位 */
-    justify-self: start; /* 靠左 */
-    align-self: end; /* 靠底對齊右邊圖片 */
-    margin: 0 0 0 5vw;
+    position: absolute;
+    bottom: 4vh; /* 距離畫面最底端 4% 的位置 */
+    left: 5vw;
+    margin: 0;
     text-align: left;
     width: auto;
-    font-size: 8px;
+    font-size: 5px; /* 保留你設定的 5px */
     line-height: 1.4;
     color: #666;
     white-space: normal;
@@ -383,25 +379,23 @@ span.tc_space {
   .nav-left p {
     margin: 0;
   }
+
+  /* 強制顯示換行 */
   .nav-left p br {
     display: inline !important;
   }
 
-  /* [第 4 排，右側] 右下圖標：只佔右半邊的網格 */
+  /* 標籤圖 (右下角) */
   .nav-right {
-    grid-column: 2 / -1;
-    grid-row: 4;
-    position: relative;
-    bottom: auto;
-    right: auto;
-    top: auto; /* 解除絕對定位 */
-    justify-self: end; /* 靠右 */
-    align-self: end; /* 靠底對齊左邊文字 */
-    margin: 0 5vw 0 0;
+    position: absolute;
+    bottom: 4vh; /* 與左邊文字保持同樣的底部高度，完美切齊 */
+    right: 5vw;
+    margin: 0;
+    top: auto;
   }
 
   .nav-right .nav-image {
-    width: 28vw;
+    width: 40vw; /* 保留你設定的 40vw */
     max-width: 100px;
     margin-top: 0;
     object-fit: contain;
