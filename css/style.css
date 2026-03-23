@@ -297,7 +297,7 @@ span.tc_space {
 
   .nav-left {
     position: absolute;
-    top: 9vh; /* 🔥 稍微調高一點，避免跟上方跑馬燈重疊 */
+    top: 5vh;
     left: 5vw;
     margin: 0;
     width: 30vw;
@@ -328,7 +328,7 @@ span.tc_space {
 
   .right-vol {
     position: absolute;
-    top: 20vh; /* 🔥 因為你的圖片設了 40vw 比較大，音量鍵要往下推才不會疊在一起 */
+    top: 5vh;
     right: 5vw;
     margin: 0;
     display: block;
