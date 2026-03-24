@@ -367,8 +367,8 @@ span.tc_space {
     position: relative;
     width: 100vw;
     height: 50vh;
-    margin-bottom: 10vh;
-    bottom: auto;
+    margin-top: 25vh;
+    bottom: 15vh;
     left: auto;
 
     display: flex;
