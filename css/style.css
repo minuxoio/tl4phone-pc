@@ -366,22 +366,20 @@ span.tc_space {
   .player-menu {
     position: relative;
     width: 100vw;
-    height: auto;
-    margin-top: 10vh; /* 距離上方呼吸字體的距離 */
-    margin-bottom: 10vh; /* 底部留一點白 */
+    height: 50vh;
+    margin-bottom: 10vh;
     bottom: auto;
     left: auto;
 
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    padding: 0; /* 絕對不加 padding */
-
+    padding: 0;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 15px;
     -webkit-overflow-scrolling: touch;
-    scale: 1; /* 覆蓋舊版設定 */
+    scale: 1;
   }
 
   .player-menu::-webkit-scrollbar {
@@ -392,7 +390,7 @@ span.tc_space {
   }
 
   .player-item {
-    flex: 0 0 60vw; /* 機器寬度佔螢幕 60% */
+    flex: 0 0 60vw;
     display: flex;
     align-items: center;
     justify-content: center;
