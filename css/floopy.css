@@ -57,14 +57,14 @@ body {
   position: absolute;
   bottom: 3.5vh; /* 與視窗頂部的間距 */
   left: 2.5vw; /* 與視窗右側的間距 */
-  font-size: 30px;
+  font-size: 15px;
 }
 
 .nav-left {
   position: absolute; /* 使用絕對定位，控制在特定位置 */
   top: 5vh; /* 與視窗頂部的間距 */
   margin-left: 2vw; /* 與視窗右側的間距 */
-  font-size: 11px;
+  font-size: 7px;
   margin-top: 2.5vh; /* 與視窗頂部的間距 */
   margin-left: 2.5vw; /* 與視窗右側的間距 */
   font-weight: 500;
@@ -106,51 +106,43 @@ body {
 }
 
 .logo img {
-  width: 260px; /* 讓圖片填滿容器的寬度 */
+  width: 150px; /* 讓圖片填滿容器的寬度 */
   max-width: none; /* 防止圖片過度縮放 */
   height: auto; /* 保持圖片的比例 */
 }
 /* 左側導航樣式 */
+
 .runborder {
-  margin-top: 4vh; /* 與視窗頂部的間距 */
-  margin-left: 2.5vw; /* 與視窗右側的間距 */
+  margin-top: 4vh;
+  margin-left: 2.5vw;
 }
 
 .runborder .marquee-container {
-  width: 10vw;
+  width: 20vw;
   overflow: hidden;
   display: flex;
   border-radius: 25px;
   border-style: solid;
   border-color: black;
-  border-width: 1.5px;
-  font-size: 12px;
+  border-width: 1px;
+  font-size: 8px;
 }
 
-.marquee-content {
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee 10s linear infinite;
-  padding-left: 8px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-
-.marquee-content2 {
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee2 10s linear infinite;
-  padding-left: 8px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
+.marquee-content,
+.marquee-content2,
 .marquee-content3 {
   display: inline-block;
   white-space: nowrap;
-  animation: marquee2 10s linear infinite;
   padding-left: 8px;
   padding-top: 3px;
   padding-bottom: 3px;
+}
+.marquee-content {
+  animation: marquee 10s linear infinite;
+}
+.marquee-content2,
+.marquee-content3 {
+  animation: marquee2 10s linear infinite;
 }
 
 @keyframes marquee {
@@ -161,16 +153,7 @@ body {
     transform: translateX(-100%);
   }
 }
-
 @keyframes marquee2 {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-@keyframes marquee3 {
   0% {
     transform: translateX(0);
   }
@@ -186,22 +169,22 @@ body {
 }
 
 .nav-right .nav-image {
-  width: 20vw; /* 圖片寬度設為視窗寬度的 x% */
+  width: 30vw; /* 圖片寬度設為視窗寬度的 x% */
   height: auto; /* 自動調整高度比例 */
-  max-width: 250px; /* 設定最大寬度，避免圖片過大 */
-  max-height: 250px; /* 設定最大高度，保持比例 */
+  max-width: 130px; /* 設定最大寬度，避免圖片過大 */
+  max-height: 130px; /* 設定最大高度，保持比例 */
   object-fit: contain; /* 確保圖片完整顯示 */
 }
 .right-vol {
   position: absolute;
   top: 11.5vh; /* 根據需要調整位置 */
-  right: 4.7vw;
+  right: 8vw;
   cursor: pointer; /* 鼠標變成指針 */
 }
 
 .volume_icon {
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 16px;
 }
 .back-button {
   position: absolute;
@@ -211,8 +194,8 @@ body {
 }
 
 .back-button img {
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 16px;
 }
 
 .title {
@@ -229,10 +212,10 @@ body {
 .download-button {
   display: none;
   position: absolute;
-  bottom: 15%;
+  bottom: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 20px;
+  font-size: 10px;
   color: rgb(39, 39, 39);
   cursor: pointer;
 
@@ -297,7 +280,7 @@ body {
   transform: translate(-50%, -50%);
   z-index: 10;
   text-align: center;
-  font-size: 18px;
+  font-size: 10px;
   animation: breathing 5s infinite;
   opacity: 1; /* 初始顯示 */
   transition: opacity 0.5s ease; /* 平滑過渡效果 */
@@ -311,24 +294,24 @@ body {
 }
 
 span.tc_space {
-  letter-spacing: 10px; /* 字距調整 */
+  letter-spacing: 6px; /* 字距調整 */
 }
 
 /* 磁片機圖片 */
 .disk-drive {
   width: 20vw;
-  max-width: 400px; /* 限制最大寬度 */
+  max-width: 300px; /* 限制最大寬度 */
   height: auto;
 }
 
 /* 磁片樣式 */
 .disk {
   position: absolute;
-  top: 48.9%;
+  top: 32.5%;
   left: 50%;
 
-  width: 200px;
-  height: 200px;
+  width: 85px;
+  height: 85px;
 
   background-size: contain;
   background-repeat: no-repeat;
@@ -344,11 +327,11 @@ span.tc_space {
 }
 .spline-wrapper {
   position: absolute; /* 絕對定位 */
-  top: 74.1vh;
+  top: 77vh;
   left: 41.7vw;
   scale: 0.85;
-  width: 924.8px; /* 固定寬度 */
-  height: 2000px; /* 固定高度 */
+  width: 1216.5px; /* 固定寬度 */
+  height: 2200px; /* 固定高度 */
   transform: translate(-50%, -50%); /* 水平垂直居中 */
   overflow: hidden; /* 防止內容超出 */
 }
