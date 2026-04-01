@@ -1,14 +1,8 @@
 body {
   font-family: 
-        /* 英文字型優先順序 */
-    "Roboto Mono",
-    "Helvetica",
-    "Arial",
-    /* 中文字型優先順序 */ "Roboto Mono",
-    "Noto Sans CJK TC",
-    "PingFang TC",
-    "Microsoft JhengHei",
-    /* 後備字型 */ sans-serif;
+        /* 英文字型優先順序 */ "Roboto Mono", "Helvetica",
+    "Arial", /* 中文字型優先順序 */ "Roboto Mono", "Noto Sans CJK TC",
+    "PingFang TC", "Microsoft JhengHei", /* 後備字型 */ sans-serif;
   background-color: #f4f4f4;
   /* <uniquifier>: Use a unique and descriptive class name*/
   /*<weight>: Use a value from 100 to 700*/
@@ -57,13 +51,13 @@ body {
 .right-vol {
   position: absolute;
   top: 11.5vh; /* 根據需要調整位置 */
-  right: 4.7vw;
+  right: 8vw;
   cursor: pointer; /* 鼠標變成指針 */
 }
 
 .volume_icon {
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 16px;
 }
 .back-button {
   position: absolute;
@@ -73,8 +67,8 @@ body {
 }
 
 .back-button img {
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 16px;
 }
 
 .deco-text h4 {
@@ -150,9 +144,7 @@ body {
   flex-direction: column;
   align-items: flex-start; /* 對齊容器頂部 */
   gap: 40px; /* 圖片與文字間隔 */
-  transition:
-    transform 0.3s ease,
-    opacity 0.7s ease;
+  transition: transform 0.3s ease, opacity 0.7s ease;
 }
 
 .album-cover {
@@ -240,10 +232,7 @@ body {
     text-underline-offset: 10px;*/
   color: #000000;
   opacity: 1;
-  transition:
-    opacity 0.3s ease,
-    transform 0.7s ease,
-    color 0.1s ease;
+  transition: opacity 0.3s ease, transform 0.7s ease, color 0.1s ease;
 }
 
 a {
